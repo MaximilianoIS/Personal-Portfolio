@@ -1,0 +1,81 @@
+.contact_wrapper svg {
+  font-size: 1em;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.contact-form {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  .send-btn {
+    align-self: flex-end;
+    width: auto !important;
+    margin-top: 20px;
+    font-family: var(--font-display) !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    font-style: normal !important;
+    text-transform: none !important;
+    letter-spacing: 0.04em !important;
+    padding: 10px 44px !important;
+    border-radius: 8px !important;
+    background: rgba(60, 62, 70, 0.92) !important;
+    color: #f0f0f2 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18) !important;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      background: rgba(80, 82, 92, 0.98) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28) !important;
+      transform: translateY(-1px) !important;
+    }
+
+    svg {
+      color: #f0f0f2 !important;
+      font-size: 1rem !important;
+    }
+  }
+}
+
+.form-flex {
+  display: flex;
+  gap: 15px;
+  padding-bottom: 15px;
+  align-items: flex-start;
+
+  .MuiFormControl-root {
+    width: 100%;
+  }
+}
+
+.form-flex--type {
+  padding-bottom: 15px;
+
+  // Override the generic 100% width so items can share the row
+  .MuiFormControl-root {
+    width: auto !important;
+  }
+}
+
+.contact-type-select {
+  flex: 0 0 220px;
+  width: 220px !important;
+}
+
+.institution-name-field {
+  flex: 1 1 auto;
+  width: auto !important;
+}
+
+form {
+  width: 100% !important;
+}
+
+.body-form {
+  width: 100% !important;
+  margin-bottom: 8px !important;
+}

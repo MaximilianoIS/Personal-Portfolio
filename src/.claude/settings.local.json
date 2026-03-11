@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.mhpc.it)",
+      "WebFetch(domain:eumaster4hpc.eu)"
+    ]
+  }
+}

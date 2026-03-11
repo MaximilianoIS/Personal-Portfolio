@@ -1,0 +1,69 @@
+.skills-container {
+    padding: 5% 10%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.skills-container .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 72px;
+}
+
+.skills-container .skills-grid .skill {
+    align-items: flex-start;
+    text-align: left;
+}
+
+// ─── Icon container — rounded square, gold accent ─────────────
+.skill-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 14px;
+    border: 1px solid rgba(201, 168, 76, 0.28);
+    background: rgba(201, 168, 76, 0.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.4rem;
+}
+
+.flex-chips {
+    line-height: 2;
+    margin-top: 0.5rem;
+
+    .chip-title {
+        padding-right: 10px;
+        color: var(--text-muted, #506080);
+        font-family: var(--font-mono, monospace);
+        font-size: 0.68rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+    }
+}
+
+.flex-chips .MuiChip-root {
+    margin-right: 0.4em;
+    margin-bottom: 0.25em;
+}
+
+@media screen {
+    @media (max-width: 960px) {
+        .skills-container .skills-grid {
+            grid-template-columns: 1fr;
+            grid-gap: 48px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .skills-container {
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .skills-container .skills-grid .skill {
+            padding-bottom: 5%;
+        }
+    }
+}

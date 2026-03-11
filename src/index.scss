@@ -1,0 +1,740 @@
+// ─── Tokens ───────────────────────────────────────────────────
+:root {
+  // Dark
+  --ink: #08090d;
+  --ink-soft: #0d1018;
+  --ink-card: #111520;
+
+  // Light
+  --ivory: #ffffff;
+  --ivory-2: #f9fafb;
+  --ivory-text: #111827;
+
+  // Accent — warm financial gold
+  --gold: #c9a84c;
+  --gold-light: #dfc06a;
+  --gold-dim: rgba(201, 168, 76, 0.12);
+
+  // Text
+  --text-primary: #e8ecf2;
+  --text-secondary: #8a9ab5;
+  --text-muted: #506080;
+
+  // Fonts
+  --font-display: "Cormorant Garamond", "Times New Roman", serif;
+  --font-mono: "DM Mono", "Courier New", monospace;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --t: all 0.25s var(--ease);
+}
+
+// ─── Reset ────────────────────────────────────────────────────
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.75;
+  background-color: var(--ink);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--gold-light);
+  background: var(--gold-dim);
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+}
+
+// ─── Typography — clean sans-serif ────────────────────────────
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  color: var(--text-primary);
+  font-style: normal;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0em;
+}
+
+h2 {
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
+  font-weight: 400;
+  font-style: italic;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-weight: 400;
+  font-style: italic;
+}
+
+// Location / subtitle in cards — mono caps
+h4 {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 300;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin: 0 0 0.35em;
+}
+
+p {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin: 0 0 0.8em;
+  font-size: 0.95rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: var(--t);
+}
+
+a:hover {
+  color: var(--gold-light);
+}
+
+label {
+  font-family: var(--font-body);
+  color: var(--text-primary);
+}
+
+button {
+  font-family: var(--font-body);
+}
+
+// ─── Layout ───────────────────────────────────────────────────
+.main-container {
+  position: relative;
+  background-color: var(--ink);
+  min-height: 100vh;
+
+  // Subtle grid — elegant, like a data/finance dashboard
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.container {
+  margin-top: 64px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.items-container {
+  padding: 5% 10%;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+// ─── NAVBAR — gray frosted glass ──────────────────────────────
+.navigation-bar {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  width: 100% !important;
+
+  // Transparent so AppBar's gray + blur shows through
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  border-bottom: none !important;
+  box-shadow: none !important;
+
+  // Nav link buttons
+  button {
+    font-family: var(--font-display) !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    font-style: normal !important;
+    text-transform: none !important;
+    letter-spacing: 0.02em !important;
+    padding: 8px 22px !important;
+    color: var(--text-secondary) !important;
+    transition: var(--t) !important;
+    border-radius: 8px !important;
+    background: transparent !important;
+    position: relative !important;
+    min-width: 0 !important;
+
+    &:hover {
+      color: var(--text-primary) !important;
+      background: rgba(201, 168, 76, 0.08) !important;
+    }
+  }
+
+  // The theme-toggle icon
+  svg {
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    transition: var(--t);
+
+    &:hover {
+      color: var(--gold-light);
+    }
+  }
+}
+
+// Mobile drawer
+.navigation-bar-responsive {
+  background: rgba(8, 9, 13, 0.98) !important;
+  backdrop-filter: blur(20px) !important;
+
+  span,
+  p {
+    font-family: var(--font-display) !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    color: var(--text-primary) !important;
+    letter-spacing: 0.01em !important;
+  }
+}
+
+.mobile-menu-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+// ─── Hero ─────────────────────────────────────────────────────
+.header-image {
+  width: 100%;
+  height: 460px;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+        rgba(8, 9, 13, 0.2) 0%,
+        transparent 40%,
+        rgba(8, 9, 13, 0.65) 100%);
+  }
+
+  img {
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+    filter: saturate(0.65) brightness(0.72);
+    transition: transform 10s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+}
+
+.about-section {
+  position: relative;
+
+  h1,
+  h2 {
+    color: var(--text-primary) !important;
+    opacity: 1 !important;
+  }
+
+  h3,
+  p {
+    color: var(--text-secondary) !important;
+    opacity: 1 !important;
+  }
+}
+
+// ─── Skills ───────────────────────────────────────────────────
+.skills-container svg {
+  color: var(--gold);
+  opacity: 0.85;
+}
+
+.chip {
+  background: var(--gold-dim) !important;
+  border: 1px solid rgba(201, 168, 76, 0.22) !important;
+  border-radius: 2px !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.7rem !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.08em !important;
+  transition: var(--t) !important;
+
+  &:hover {
+    background: rgba(201, 168, 76, 0.22) !important;
+    border-color: var(--gold) !important;
+    color: var(--gold-light) !important;
+  }
+}
+
+.flex-chips .chip-title {
+  font-family: var(--font-mono) !important;
+  font-size: 0.68rem !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  color: var(--text-muted) !important;
+}
+
+// ─── Timeline — custom component (see Timeline.scss) ──────────
+
+// ─── Cards ────────────────────────────────────────────────────
+.project-card,
+.card {
+  background: var(--ink-card);
+  border: 1px solid rgba(201, 168, 76, 0.12);
+  border-radius: 3px;
+  transition: var(--t);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.5px;
+    height: 0;
+    background: linear-gradient(to bottom, var(--gold-light), var(--gold));
+    transition: height 0.3s var(--ease);
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: rgba(201, 168, 76, 0.32);
+    box-shadow: 0 10px 36px rgba(0, 0, 0, 0.4);
+
+    &::before {
+      height: 100%;
+    }
+  }
+}
+
+// ─── Global MUI Button baseline ───────────────────────────────
+.MuiButton-root {
+  font-family: var(--font-display) !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  font-style: normal !important;
+  text-transform: none !important;
+  letter-spacing: 0.02em !important;
+  border-radius: 100px !important;
+  transition: var(--t) !important;
+}
+
+// ─── CONTACT FORM ─────────────────────────────────────────────
+.contact-section,
+[class*="contact"] {
+  textarea {
+    min-height: 120px !important;
+    max-height: 200px !important;
+  }
+}
+
+div[class*="MuiInputBase"],
+div[class*="MuiOutlinedInput"],
+div[class*="MuiFilledInput"] {
+  background: var(--ink-card) !important;
+  border-radius: 8px !important;
+}
+
+div[class*="MuiInputBase"] input,
+div[class*="MuiInputBase"] textarea,
+div[class*="MuiOutlinedInput"] input,
+div[class*="MuiOutlinedInput"] textarea,
+div[class*="MuiFilledInput"] input,
+div[class*="MuiFilledInput"] textarea {
+  color: var(--text-primary) !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.9rem !important;
+  font-weight: 300 !important;
+  background: transparent !important;
+
+  &::placeholder {
+    color: var(--text-muted) !important;
+    opacity: 1 !important;
+  }
+}
+
+fieldset {
+  border-color: rgba(201, 168, 76, 0.18) !important;
+  border-radius: 8px !important;
+  transition: border-color 0.22s ease !important;
+}
+
+div[class*="MuiOutlinedInput"]:hover fieldset {
+  border-color: rgba(201, 168, 76, 0.4) !important;
+}
+
+div[class*="Mui-focused"] fieldset {
+  border-color: var(--gold) !important;
+  border-width: 1.5px !important;
+}
+
+label[class*="MuiInputLabel"],
+label[class*="MuiFormLabel"] {
+  font-family: var(--font-mono) !important;
+  font-size: 0.68rem !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: var(--text-muted) !important;
+  font-weight: 300 !important;
+}
+
+label[class*="Mui-focused"] {
+  color: var(--gold) !important;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  background: var(--ink-card) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid rgba(201, 168, 76, 0.18) !important;
+  border-radius: 8px !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.9rem !important;
+  font-weight: 300 !important;
+  padding: 12px 16px !important;
+  outline: none !important;
+  transition: var(--t) !important;
+
+  &::placeholder {
+    color: var(--text-muted) !important;
+    opacity: 1 !important;
+  }
+
+  &:hover {
+    border-color: rgba(201, 168, 76, 0.38) !important;
+  }
+
+  &:focus {
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.08) !important;
+  }
+}
+
+textarea {
+  background: var(--ink-card) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid rgba(201, 168, 76, 0.18) !important;
+  border-radius: 8px !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.9rem !important;
+  font-weight: 300 !important;
+  min-height: 120px !important;
+  max-height: 200px !important;
+  padding: 12px 16px !important;
+  outline: none !important;
+  resize: vertical !important;
+  transition: var(--t) !important;
+
+  &::placeholder {
+    color: var(--text-muted) !important;
+    opacity: 1 !important;
+  }
+
+  &:hover {
+    border-color: rgba(201, 168, 76, 0.38) !important;
+  }
+
+  &:focus {
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.08) !important;
+  }
+}
+
+// ─── SEND Button ─────────────────────────────────────────────
+button[class*="MuiButton"][type="submit"],
+button[class*="MuiButton-contained"],
+button[class*="MuiButton-containedPrimary"],
+.contact-section button[class*="MuiButton"],
+button.send-btn {
+  font-family: var(--font-display) !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  color: #08090d !important;
+  background: var(--gold) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 10px 44px !important;
+  min-width: 150px !important;
+  box-shadow: 0 4px 14px rgba(201, 168, 76, 0.2) !important;
+  transition: var(--t) !important;
+  cursor: pointer !important;
+  letter-spacing: 0.01em !important;
+
+  &:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 20px rgba(201, 168, 76, 0.3) !important;
+    background: var(--gold-light) !important;
+  }
+
+  &:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 8px rgba(201, 168, 76, 0.15) !important;
+  }
+
+  svg {
+    color: #08090d !important;
+    margin-left: 6px !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+// ─── LIGHT MODE ───────────────────────────────────────────────
+.light-mode {
+  background-color: var(--ivory);
+  color: var(--ivory-text);
+
+  h1,
+  h2,
+  h3,
+  h5 {
+    color: var(--ivory-text) !important;
+  }
+
+  h4 {
+    color: var(--gold) !important;
+  }
+
+  p {
+    color: #5a5a6a !important;
+  }
+
+  a {
+    color: var(--ivory-text) !important;
+  }
+
+  a:hover {
+    color: var(--gold) !important;
+  }
+
+  // Light grid pattern (slightly darker lines)
+  .main-container,
+  &.main-container {
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  // Light frosted nav — transparent so AppBar gray+blur shows
+  .navigation-bar {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+
+    button {
+      color: var(--ivory-text) !important;
+      border-radius: 6px !important;
+
+      &:hover {
+        background: rgba(201, 168, 76, 0.08) !important;
+        color: var(--ivory-text) !important;
+      }
+    }
+
+    svg {
+      color: var(--text-muted) !important;
+
+      &:hover {
+        color: var(--ivory-text) !important;
+      }
+    }
+  }
+
+  .navigation-bar-responsive {
+    background: rgba(250, 249, 247, 0.98) !important;
+
+    span,
+    p {
+      color: var(--ivory-text) !important;
+    }
+  }
+
+  .about-section {
+    background-image: url("./assets/images/bg-light.png");
+
+    h1,
+    h2,
+    h3 {
+      color: var(--ivory-text) !important;
+    }
+
+    p {
+      color: #5a5a6a !important;
+    }
+  }
+
+  .skills-container svg {
+    color: var(--gold) !important;
+  }
+
+  .chip {
+    background: rgba(201, 168, 76, 0.09) !important;
+    border-color: rgba(201, 168, 76, 0.22) !important;
+    color: var(--ivory-text) !important;
+
+    &:hover {
+      background: rgba(201, 168, 76, 0.18) !important;
+    }
+  }
+
+  .flex-chips .chip-title {
+    color: #9a9aaa !important;
+  }
+
+  .vertical-timeline::before {
+    background: rgba(201, 168, 76, 0.3) !important;
+  }
+
+  .vertical-timeline-element-content,
+  .vertical-timeline-element-content.bounce-in {
+    background: #fff !important;
+    border-color: rgba(201, 168, 76, 0.18) !important;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.07) !important;
+  }
+
+  .vertical-timeline-element-title,
+  .vertical-timeline-element-content h3 {
+    color: var(--ivory-text) !important;
+  }
+
+  .vertical-timeline-element-content p {
+    color: #5a5a6a !important;
+  }
+
+  .vertical-timeline-element-date {
+    color: #9a9aaa !important;
+  }
+
+  .vertical-timeline-element-icon {
+    background: var(--ivory) !important;
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15) !important;
+  }
+
+  .vertical-timeline-element-content-arrow {
+    border-right-color: rgba(201, 168, 76, 0.18) !important;
+  }
+
+  div[class*="MuiInputBase"],
+  div[class*="MuiOutlinedInput"],
+  div[class*="MuiFilledInput"] {
+    background: #fff !important;
+  }
+
+  div[class*="MuiInputBase"] input,
+  div[class*="MuiInputBase"] textarea,
+  div[class*="MuiOutlinedInput"] input,
+  div[class*="MuiOutlinedInput"] textarea {
+    color: var(--ivory-text) !important;
+  }
+
+  fieldset {
+    border-color: rgba(0, 0, 0, 0.1) !important;
+  }
+
+  label[class*="MuiInputLabel"],
+  label[class*="MuiFormLabel"] {
+    color: #9a9aaa !important;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    background: #fff !important;
+    color: var(--ivory-text) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .project-card,
+  .card {
+    background: #fff;
+    border-color: rgba(201, 168, 76, 0.16);
+  }
+}
+
+// ─── Responsive ───────────────────────────────────────────────
+@media (max-width: 768px) {
+  .items-container {
+    padding: 6% 5%;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+  }
+
+  .header-image,
+  .header-image img {
+    height: 300px;
+  }
+}
+
+// ─── Scrollbar ────────────────────────────────────────────────
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 76, 0.4);
+  border-radius: 2px;
+}
+
+::selection {
+  background: rgba(201, 168, 76, 0.2);
+  color: var(--text-primary);
+}
