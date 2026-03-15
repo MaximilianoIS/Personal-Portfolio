@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import '../assets/styles/Contact.scss';
 import emailjs from '@emailjs/browser';
 import Box from '@mui/material/Box';
@@ -27,6 +27,10 @@ function Contact() {
 
   const form = useRef();
 
+  useEffect(() => {
+    emailjs.init('fantPAIYtP16183l-');
+  }, []);
+
   const [sending, setSending] = useState<boolean>(false);
   const [sent, setSent] = useState<boolean>(false);
   const [sendError, setSendError] = useState<boolean>(false);
@@ -53,7 +57,8 @@ function Contact() {
     setSendError(false);
 
     const templateParams = {
-      from_name: name,
+      name,
+      email,
       reply_to: email,
       contact_type: contactType === 'institution' ? `Institution — ${institutionName}` : 'Individual',
       message,
@@ -62,8 +67,7 @@ function Contact() {
     emailjs.send(
       'service_p6yy3ih',
       'template_wyrufwp',
-      templateParams,
-      'fantPAIYtP16183l-'
+      templateParams
     ).then(() => {
       setSending(false);
       setSent(true);
