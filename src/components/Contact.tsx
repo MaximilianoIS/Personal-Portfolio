@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import '../assets/styles/Contact.scss';
+import emailjs from '@emailjs/browser';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
@@ -26,14 +27,55 @@ function Contact() {
 
   const form = useRef();
 
+  const [sending, setSending] = useState<boolean>(false);
+  const [sent, setSent] = useState<boolean>(false);
+  const [sendError, setSendError] = useState<boolean>(false);
+
   const sendEmail = (e: any) => {
     e.preventDefault();
 
-    setNameError(name === '');
-    setEmailError(email === '');
-    setMessageError(message === '');
-    setContactTypeError(contactType === '');
-    setInstitutionError(contactType === 'institution' && institutionName === '');
+    const hasNameError = name === '';
+    const hasEmailError = email === '';
+    const hasMessageError = message === '';
+    const hasTypeError = contactType === '';
+    const hasInstitutionError = contactType === 'institution' && institutionName === '';
+
+    setNameError(hasNameError);
+    setEmailError(hasEmailError);
+    setMessageError(hasMessageError);
+    setContactTypeError(hasTypeError);
+    setInstitutionError(hasInstitutionError);
+
+    if (hasNameError || hasEmailError || hasMessageError || hasTypeError || hasInstitutionError) return;
+
+    setSending(true);
+    setSent(false);
+    setSendError(false);
+
+    const templateParams = {
+      from_name: name,
+      reply_to: email,
+      contact_type: contactType === 'institution' ? `Institution — ${institutionName}` : 'Individual',
+      message,
+    };
+
+    emailjs.send(
+      'service_p6yy3ih',
+      'template_wyrufwp',
+      templateParams,
+      'fantPAIYtP16183l-'
+    ).then(() => {
+      setSending(false);
+      setSent(true);
+      setName('');
+      setEmail('');
+      setMessage('');
+      setContactType('');
+      setInstitutionName('');
+    }).catch(() => {
+      setSending(false);
+      setSendError(true);
+    });
   };
 
   return (
@@ -41,7 +83,7 @@ function Contact() {
       <div className="items-container">
         <div className="contact_wrapper">
           <h1>Contact Me</h1>
-          <p>Got a project waiting to be realized? Let's collaborate and make it happen!</p>
+          <p>If you would like to get in touch, please feel free to reach out. I welcome inquiries from researchers, institutions, and collaborators.</p>
           <Box
             ref={form}
             component="form"
@@ -119,13 +161,19 @@ function Contact() {
               helperText={messageError ? "Please enter a message" : ""}
             />
 
+            {sendError && (
+              <p style={{ color: '#e57373', fontSize: '0.85rem', textAlign: 'right', margin: '8px 0 0' }}>
+                Something went wrong. Please try again.
+              </p>
+            )}
             <Button
               variant="contained"
-              endIcon={<SendIcon sx={{ fontSize: '1rem !important' }} />}
+              endIcon={!sending && !sent ? <SendIcon sx={{ fontSize: '1rem !important' }} /> : undefined}
               onClick={sendEmail}
+              disabled={sending}
               className="send-btn"
             >
-              Send
+              {sending ? 'Sending…' : sent ? '✓ Sent!' : 'Send'}
             </Button>
           </Box>
         </div>
