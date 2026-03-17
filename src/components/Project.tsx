@@ -266,7 +266,7 @@ const personalProjects: ProjectData[] = [
             { src: mock04, caption: 'Sentiment divergence by reporting nation  [ placeholder ]' },
             { src: mock03, caption: 'APEC 2025 temporal sentiment trends  [ placeholder ]' },
         ],
-        paperUrl: '/ai-industry-report.pdf',
+        paperUrl: 'https://drive.google.com/file/d/1RJIFmhnnjEzZ4kGz1Aj_HgJANnx1Wb8s/view?usp=sharing',
         paperSectionLabel: 'Research Report',
         paperLabel: 'Global News Big-Data Analysis — Final Report',
     },
