@@ -18,6 +18,17 @@ import walkOnPlanes from '../assets/images/wop.mp4';
 //Thesis
 import thesis_cover from '../assets/images/thesis_cover.png';
 
+//Econometrics
+
+
+
+//DFT & PL
+import dft_cover from '../assets/images/BaTi.png';
+
+
+//CTR
+import ctr_cover from '../assets/images/CTR.png';
+
 
 //iQuHACK
 import mit_cover from '../assets/images/mit_cover.png';
@@ -100,11 +111,26 @@ interface ProjectData {
     extraImages?: MediaItem[];      // snapshot grid
     videoPlaceholder?: boolean;     // show video embed placeholder
     videoSrc?: string;              // actual local video file
+    videoUrl?: string;              // YouTube or external video URL to embed
+    videoLabel?: string;            // custom title for the video section
     paperUrl?: string;              // Google Drive / local paper link
+    paperSectionLabel?: string;     // section separator title e.g. "Manuscript", "Thesis"
     paperLabel?: string;
     githubUrl?: string;             // GitHub repository link
     demoUrl?: string;               // live demo / YouTube link
     demoLabel?: string;             // button label (default: "Live Demo")
+}
+
+// Converts YouTube watch/share URLs → embeddable URLs
+function toEmbedUrl(url: string): string {
+    // youtu.be/ID
+    const shortMatch = url.match(/youtu\.be\/([A-Za-z0-9_-]+)/);
+    if (shortMatch) return `https://www.youtube.com/embed/${shortMatch[1]}`;
+    // youtube.com/watch?v=ID
+    const watchMatch = url.match(/[?&]v=([A-Za-z0-9_-]+)/);
+    if (watchMatch) return `https://www.youtube.com/embed/${watchMatch[1]}`;
+    // already an embed or other URL — use as-is
+    return url;
 }
 
 const researchProjects: ProjectData[] = [
@@ -124,8 +150,10 @@ const researchProjects: ProjectData[] = [
             { src: mock05, caption: 'MPI parallelization snapshot  [ placeholder ]' },
         ],
         videoSrc: walkOnPlanes,
-        paperUrl: 'https://drive.google.com/file/d/YOUR_PAPER_ID/view',
-        paperLabel: 'First-Passage Monte Carlo — Research Paper',
+        videoLabel: 'First Passage Animation',
+        paperUrl: 'https://drive.google.com/file/d/1vhco9f1EE7ijbgKuUKRPiY3UhUUEaDLQ/view?usp=sharing',
+        paperSectionLabel: 'Manuscript',
+        paperLabel: 'First-Passage-Based Last-Passage — Manuscript',
     },
     {
         id: 'quantum-entanglement',
@@ -144,6 +172,7 @@ const researchProjects: ProjectData[] = [
         ],
         videoPlaceholder: true,
         paperUrl: 'https://drive.google.com/file/d/1CNlGVHFFrJC0Clsv-IPPDVeJedd7bSct/view?usp=sharing',
+        paperSectionLabel: 'Thesis',
         paperLabel: 'Quantum Entanglement in Optical Lattices — Thesis',
     },
     {
@@ -162,21 +191,39 @@ const researchProjects: ProjectData[] = [
             { src: mock03, caption: 'News topic clustering  [ placeholder ]' },
         ],
         paperUrl: 'https://drive.google.com/file/d/YOUR_PAPER_ID/view',
+        paperSectionLabel: 'Working Paper',
         paperLabel: 'AI Semiconductor Forecasting — Working Paper',
     },
     {
-        id: 'regression-property',
-        title: 'Multiple Regression Property Analysis',
-        shortDesc: 'Predicted real estate prices using OLS and multi-regression with Python (Pandas, NumPy, Scikit-Learn).',
-        fullDesc: 'A data-driven real estate pricing model built using classical statistical regression techniques. The project applies Ordinary Least Squares (OLS) and multiple linear regression to a curated dataset of property features (location, size, amenities, market trends). Feature engineering, multicollinearity diagnostics (VIF), and residual analysis ensure model robustness. Results are visualized with interactive plots to communicate predictive performance to non-technical audiences.',
-        tech: ['Python', 'Pandas', 'NumPy', 'Scikit-Learn', 'Statsmodels', 'Matplotlib'],
-        image: mock04,
-        link: 'https://github.com/yujisatojr/multi-reg-analysis',
-        category: 'Data Science · ML',
+        id: 'goas-dft',
+        title: 'Photoluminescence & DFT Study on GaAs',
+        shortDesc: 'Experimental and computational internship at the AI Semiconductors Lab (GIST): PL measurements on GaAs samples and beginner-level DFT calculations with Quantum ESPRESSO.',
+        fullDesc: 'During this internship at the AI Semiconductors Lab under Prof. Youngdahl Daniel Jho, I gained hands-on experience with photoluminescence (PL) spectroscopy on gallium arsenide (GaAs) samples. This involved signal monitoring, CCD data acquisition, and systematic data collection workflows in an experimental setting.\n\nIn parallel, I studied the theoretical foundations of Density Functional Theory (DFT) and ran beginner-level calculations using Quantum ESPRESSO, with a focus on deformation potential estimation — a key parameter linking lattice strain to electronic band structure shifts.',
+        tech: ['Python', 'Quantum ESPRESSO', 'DFT', 'MATLAB', 'LabVIEW', 'CCD Spectroscopy', 'GaAs'],
+        image: dft_cover,
+        link: '#',
+        category: 'Experimental Physics · Materials Science',
+        keyFormula: 'E_g(ε) = E_g(0) + Ξ_u · ε  —  Deformation potential coupling strain to bandgap',
         extraImages: [
-            { src: mock04, caption: '↑  Predicted vs. actual price scatter  [ placeholder ]', wide: true },
-            { src: mock03, caption: 'Feature importance coefficients  [ placeholder ]' },
-            { src: mock01, caption: 'Residual diagnostics  [ placeholder ]' },
+            { src: mock07, caption: '↑  PL setup — GaAs sample with CCD detector  [ placeholder ]', wide: true },
+            { src: mock05, caption: 'PL spectrum — signal vs. wavelength  [ placeholder ]' },
+            { src: mock04, caption: 'Quantum ESPRESSO band structure output  [ placeholder ]' },
+        ],
+    },
+    {
+        id: 'hedp-laser',
+        title: 'Coherent Transition Radiation',
+        shortDesc: 'Experimental internship at the High Energy Density Physics Lab (GIST): laser and optics training on a 150 TW high-power laser facility, CTR data analysis.',
+        fullDesc: 'At the High Energy Density Physics Lab under Prof. Byoung-ick Cho, I trained in laser and optics techniques in one of Korea\'s large-scale high-power laser facilities. My responsibilities included supporting laser shot operations — alignment checks, timing calibration, and safety protocols — as well as systematic data collection during experimental runs.\n\nThe main scientific focus was the Coherent Transition Radiation (CTR) experiment: a diagnostic technique that uses the radiation emitted as a relativistic electron beam crosses a material boundary to characterize the electron bunch structure. I contributed to the post-shot data analysis pipeline, processing CTR signals from the 150 TW laser-driven accelerator.',
+        tech: ['Python', 'MATLAB', 'LabVIEW', 'Optics', 'High-Power Laser', 'CTR Diagnostics', 'Data Analysis'],
+        image: ctr_cover,
+        link: '#',
+        category: 'Experimental Physics · High Energy Density',
+        keyFormula: 'CTR ∝ |F(ω)|²  —  Form factor encodes electron bunch longitudinal structure',
+        extraImages: [
+            { src: mock09, caption: '↑  150 TW laser facility — beam path overview  [ placeholder ]', wide: true },
+            { src: mock08, caption: 'CTR signal — raw detector output  [ placeholder ]' },
+            { src: mock01, caption: 'Analyzed CTR spectrum vs. simulation  [ placeholder ]' },
         ],
     },
 ];
@@ -198,7 +245,8 @@ const personalProjects: ProjectData[] = [
             { src: mock01, caption: 'Factorization results output  [ placeholder ]' },
         ],
         paperUrl: 'https://drive.google.com/file/d/1D2djtvS7fbA-pnuc0z7jLzJyWttTaM07/view?usp=drive_link',
-        paperLabel: 'iQuHACK 2025 — Project Documentation',
+        paperSectionLabel: 'Project Documentation',
+        paperLabel: 'iQuHACK 2025',
         githubUrl: 'https://github.com/MaximilianoIS/quantum-fact',
         demoUrl: 'https://www.iquise.mit.edu/iQuHACK/2025-01-31',
         demoLabel: 'iQuHACK 2025 ↗',
@@ -219,6 +267,7 @@ const personalProjects: ProjectData[] = [
             { src: mock03, caption: 'APEC 2025 temporal sentiment trends  [ placeholder ]' },
         ],
         paperUrl: '/ai-industry-report.pdf',
+        paperSectionLabel: 'Research Report',
         paperLabel: 'Global News Big-Data Analysis — Final Report',
     },
     {
@@ -256,10 +305,8 @@ const personalProjects: ProjectData[] = [
             { src: mock09, caption: 'Daily timeline — Eiffel Tower to Montmartre  [ placeholder ]' },
             { src: mock07, caption: 'Trip plan export view  [ placeholder ]' },
         ],
-        videoPlaceholder: true,
+        videoUrl: 'https://youtu.be/nWdPdh-t_8Q',
         githubUrl: 'https://github.com/MaximilianoIS/AItinerary',
-        //demoUrl: 'https://youtu.be/nWdPdh-t_8Q',
-        //demoLabel: 'Demo Video',
         demoUrl: 'https://hack2skill.com/',
         demoLabel: 'Hack2Skill',
     },
@@ -278,10 +325,9 @@ const personalProjects: ProjectData[] = [
             { src: mock08, caption: 'Confusion matrix — model accuracy  [ placeholder ]' },
             { src: mock01, caption: 'Sample output — detected vehicle with class label  [ placeholder ]' },
         ],
-        videoPlaceholder: true,
+        videoUrl: 'https://youtu.be/ZC5zQh7J92g',
+        videoLabel: 'Demo',
         githubUrl: 'https://github.com/MaximilianoIS/Korean-Car-Identification-for-Crime-Detection',
-        demoUrl: 'https://youtu.be/YOUR_DEMO_ID',
-        demoLabel: 'Demo Video',
     },
 ];
 
@@ -420,12 +466,20 @@ function Project() {
                             </div>
                         )}
 
-                        {/* ── Video — real file or placeholder ── */}
-                        {(project.videoSrc || project.videoPlaceholder) && (
+                        {/* ── Video — local file, YouTube embed, or placeholder ── */}
+                        {(project.videoSrc || project.videoUrl || project.videoPlaceholder) && (
                             <div className="panel-video-section">
-                                <h3 className="media-section-title">Demo / Walkthrough</h3>
+                                <h3 className="media-section-title">{project.videoLabel || 'Demo / Walkthrough'}</h3>
                                 {project.videoSrc ? (
                                     <AutoplayVideo src={project.videoSrc} />
+                                ) : project.videoUrl ? (
+                                    <iframe
+                                        className="panel-video panel-video--iframe"
+                                        src={toEmbedUrl(project.videoUrl)}
+                                        title="Demo / Walkthrough"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    />
                                 ) : (
                                     <div className="panel-video-placeholder">
                                         <div className="play-btn-wrap">
@@ -439,6 +493,14 @@ function Project() {
 
                         {/* ── Paper embed ── */}
                         {project.paperUrl && (
+                            <div className="panel-paper-section">
+                            {project.paperSectionLabel && (
+                                <div className="panel-section-separator">
+                                    <span className="panel-section-separator__line" />
+                                    <h3 className="panel-section-separator__title">{project.paperSectionLabel}</h3>
+                                    <span className="panel-section-separator__line" />
+                                </div>
+                            )}
                             <div className="panel-paper-embed">
                                 <div className="paper-embed-header">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -464,6 +526,7 @@ function Project() {
                                     title={project.paperLabel || 'Research Paper'}
                                     allow="autoplay"
                                 />
+                            </div>
                             </div>
                         )}
 

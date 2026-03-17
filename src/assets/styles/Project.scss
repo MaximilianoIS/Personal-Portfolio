@@ -370,11 +370,13 @@ body.panel-open #navigation {
     }
 
     .media-section-title {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #9ca3af;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 500;
+      font-style: italic;
+      letter-spacing: 0.06em;
+      text-transform: none;
+      color: #6b7280;
       margin: 0 0 14px;
     }
 
@@ -446,6 +448,12 @@ body.panel-open #navigation {
       background: #000;
       max-height: 500px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+
+      &--iframe {
+        aspect-ratio: 16 / 9;
+        max-height: none;
+        border: none;
+      }
     }
 
     .panel-video-placeholder {
@@ -487,6 +495,36 @@ body.panel-open #navigation {
       }
     }
 
+    // ── Paper section wrapper ─────────────────────────────
+    .panel-paper-section {
+      margin-bottom: 4px;
+    }
+
+    // ── Section separator (Manuscript / Thesis / etc.) ────
+    .panel-section-separator {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 8px 32px 20px;
+
+      &__line {
+        flex: 1;
+        height: 1px;
+        background: rgba(201, 168, 76, 0.25);
+      }
+
+      &__title {
+        font-family: var(--font-display);
+        font-size: 1.65rem;
+        font-weight: 400;
+        font-style: italic;
+        color: #1e2433;
+        letter-spacing: 0.02em;
+        margin: 0;
+        white-space: nowrap;
+      }
+    }
+
     // ── Paper iframe embed ────────────────────────────────
     .panel-paper-embed {
       margin: 0 32px 28px;
@@ -511,13 +549,16 @@ body.panel-open #navigation {
         }
 
         span {
-          font-size: 0.78rem;
+          font-family: var(--font-display);
+          font-size: 1rem;
           font-weight: 500;
+          font-style: italic;
           color: #374151;
           flex: 1;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
+          letter-spacing: 0.04em;
         }
 
         .paper-open-link {
@@ -686,7 +727,12 @@ body.panel-open #navigation {
       .formula-text { color: #d1d9e6; }
     }
 
-    .media-section-title { color: #4b5563; }
+    .media-section-title { color: #9ca3af; }
+
+    .panel-section-separator {
+      &__line { background: rgba(201, 168, 76, 0.2); }
+      &__title { color: #d1d9e6; }
+    }
 
     .media-item .media-img-wrap img {
       filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.45));

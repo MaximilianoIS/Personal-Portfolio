@@ -64,11 +64,12 @@ function Contact() {
       message,
     };
 
-    emailjs.send(
-      'service_p6yy3ih',
-      'template_wyrufwp',
-      templateParams
-    ).then(() => {
+    Promise.all([
+      // 1. Auto-reply → goes to the sender
+      emailjs.send('service_p6yy3ih', 'template_msp89ql', templateParams),
+      // 2. Notification → goes to you with their message
+      emailjs.send('service_p6yy3ih', 'template_xum0nmo', templateParams),
+    ]).then(() => {
       setSending(false);
       setSent(true);
       setName('');
@@ -88,6 +89,7 @@ function Contact() {
         <div className="contact_wrapper">
           <h1>Contact Me</h1>
           <p>If you would like to get in touch, please feel free to reach out. I welcome inquiries from researchers, institutions, and collaborators.</p>
+          <p className="contact-email">Or email me directly at <a href="mailto:maximiliano@gm.gist.ac.kr">maximiliano@gm.gist.ac.kr</a></p>
           <Box
             ref={form}
             component="form"
