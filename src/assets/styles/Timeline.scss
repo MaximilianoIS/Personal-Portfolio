@@ -99,6 +99,20 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+
+        &--link {
+            text-decoration: none;
+            background-image: linear-gradient(currentColor, currentColor);
+            background-size: 0% 1px;
+            background-repeat: no-repeat;
+            background-position: 0 100%;
+            transition: background-size 0.2s ease, color 0.2s ease;
+
+            &:hover {
+                color: #3a6f9e;
+                background-size: 100% 1px;
+            }
+        }
     }
 
     &__location {

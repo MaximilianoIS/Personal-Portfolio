@@ -14,6 +14,7 @@ interface HistoryEntry {
     logoAlt: string;
     tags: string[];
     type: 'research' | 'education';
+    url?: string;
 }
 
 const entries: HistoryEntry[] = [
@@ -28,6 +29,7 @@ const entries: HistoryEntry[] = [
         logoAlt: "GIST",
         tags: ["NLP", "AI"],
         type: 'research',
+        url: "https://impact.gist.ac.kr/team/professor.php",
     },
     {
         date: "July — Sept 2025",
@@ -104,7 +106,18 @@ function Timeline() {
                             <div className="history-card__header">
                                 <img src={entry.logo} alt={entry.logoAlt} className="history-card__logo" />
                                 <div className="history-card__org-block">
-                                    <span className="history-card__org">{entry.org}</span>
+                                    {entry.url ? (
+                                        <a
+                                            href={entry.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="history-card__org history-card__org--link"
+                                        >
+                                            {entry.org}
+                                        </a>
+                                    ) : (
+                                        <span className="history-card__org">{entry.org}</span>
+                                    )}
                                     <span className="history-card__location">{entry.location}</span>
                                 </div>
                                 <span className="history-card__date">{entry.shortDate}</span>
