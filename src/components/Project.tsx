@@ -107,6 +107,7 @@ interface ProjectData {
     image: string;
     link: string;
     category: string;
+    status?: 'planned';             // marks a future / proposed project
     keyFormula?: string;            // highlighted math/key idea box
     extraImages?: MediaItem[];      // snapshot grid
     videoPlaceholder?: boolean;     // show video embed placeholder
@@ -135,25 +136,35 @@ function toEmbedUrl(url: string): string {
 
 const researchProjects: ProjectData[] = [
     {
-        id: 'first-passage',
-        title: 'First-Passage-Based Last-Passage',
-        shortDesc: 'Monte Carlo algorithm to estimate electrostatic charge density on conductors by combining first-passage diffusion with last-passage boundary sampling.',
-        fullDesc: 'This research develops a novel Monte Carlo algorithm that estimates electrostatic charge density on conductor surfaces. The method innovatively combines first-passage diffusion processes — which efficiently simulate Brownian motion near boundaries — with last-passage sampling to precisely estimate surface charge distributions. This hybrid approach significantly reduces computational cost compared to classical boundary element methods while maintaining high accuracy for complex geometries.',
-        tech: ['Python', 'C', 'MPI', 'NumPy', 'Monte Carlo', 'Stochastic Processes'],
-        image: fplp_cover,
-        link: 'https://www.filmate.club/',
-        category: 'Computational Physics',
-        keyFormula: 'u(x) = 𝔼ₓ[ φ(Xτ) ]  —  Feynman-Kac representation',
+        id: 'future-research',
+        title: 'Adaptive LLM Agents & Collective Market Instability',
+        shortDesc: 'Replacing fixed BDI agents in LLM market simulations with MARL-trained policies grounded in real Korean news signals — studying whether learning agents produce more or less herding and financial instability than their static counterparts.',
+        fullDesc: 'The state of the art in multi-agent LLM financial simulation is TwinMarket (NeurIPS 2025 Best Paper), which showed that populations of fixed LLM agents interacting in a simulated market produce emergent collective phenomena — bubbles, crashes, and herding — without any explicit coordination. The critical gap: TwinMarket\'s agents are behaviourally fixed. They do not learn. Real market participants adapt their strategies based on outcomes.\n\nThis project asks what changes when you replace those static BDI agents with MARL-trained policies — agents that optimise reward signals through reinforcement learning while their market perception is grounded in real Korean financial news from the IMPACT Lab NLP pipeline. The research runs in two parallel directions.\n\nThe first is empirical. Using disaggregated KRX investor-type data and a curated corpus of Korean financial news, event study methods characterise how news signals propagate through heterogeneous investor populations — retail, institutional, foreign — and under what conditions those propagation dynamics trigger collective instability. This produces the real-world grounding that no existing paper in this field has addressed.\n\nThe second is simulation. TwinMarket is adapted to Korean market data and extended with a MARL layer built on RLlib and PettingZoo, with LLaMA-3 or Mistral running locally on GIST\'s GPU cluster. The central experiment tests whether learning agents amplify or suppress collective instability compared to fixed agents, and whether reward design — specifically Kelly-criterion-grounded incentives — can act as a mechanism against herding.\n\nThe connection to Cartlidge\'s group at Bristol is structural. Their group has built the perception layer (BondBERT, CMTF), the single-agent RL layer (DDPG-TiDE), and the market dynamics understanding (robot phase transition). What this project contributes is the collective intelligence layer — coordination and incentive mechanisms for populations of LLM agents in a real-data Korean market context.\n\nThe societal motivation is clear. Korean retail investors are among the most active and socially influenced in the world. Agentic trading systems are arriving in Korean markets faster than the research community understands their collective behaviour. Understanding the conditions under which LLM agent populations produce herding is a public interest question that sits exactly at the intersection of AI convergence and financial stability.',
+        tech: ['Python', 'RLlib', 'PettingZoo', 'LLaMA-3 / Mistral', 'MARL', 'LLM Agents', 'NLP', 'KRX Data', 'Event Study', 'BondBERT', 'PyTorch', 'HPC / GPU Cluster'],
+        image: mock01,
+        link: '#',
+        category: 'Multi-Agent AI · Financial Systems',
+        status: 'planned',
+        keyFormula: 'πᵢ* = argmax 𝔼[Σₜ γᵗ rᵢ(sₜ,aₜ) | {πⱼ}ⱼ≠ᵢ, NewsSignal(t)]  —  MARL policy under coupled agent rewards and news-grounded perception',
+    },
+    {
+        id: 'ai-semiconductor',
+        title: 'AI & Econometric Analysis of Semiconductor Markets',
+        shortDesc: 'Forecasting framework combining AI-based text analysis with econometric time-series models to extract predictive signals from large-scale semiconductor news data.',
+        fullDesc: 'This project develops a hybrid forecasting framework for semiconductor market analysis. Large-scale news and financial data are processed through NLP pipelines — using transformer-based sentiment analysis and topic modeling — to extract forward-looking signals. These signals are then integrated into classical econometric time-series models (VAR, ARIMAX) to produce market forecasts that outperform purely quantitative baselines across multiple prediction horizons.',
+        tech: ['Python', 'NLP', 'Transformers', 'ARIMAX', 'VAR', 'Pandas', 'NLTK', 'scikit-learn'],
+        image: mock05,
+        link: 'https://www.byuh.edu/',
+        category: 'AI · Economics',
+        keyFormula: 'yₜ = α + Σ βᵢ yₜ₋ᵢ  +  γ · SentimentScore(t)',
         extraImages: [
-            { src: mock10, caption: '↑  Main simulation overview  [ placeholder — replace with diagram ]', wide: true },
-            { src: terminal, caption: 'C simulation code snapshot  [ placeholder ]' },
-            { src: mock05, caption: 'MPI parallelization snapshot  [ placeholder ]' },
+            { src: mock05, caption: '↑  Sentiment pipeline architecture  [ placeholder ]', wide: true },
+            { src: mock04, caption: 'Forecast accuracy vs. baseline  [ placeholder ]' },
+            { src: mock03, caption: 'News topic clustering  [ placeholder ]' },
         ],
-        videoSrc: walkOnPlanes,
-        videoLabel: 'First Passage Animation',
-        paperUrl: 'https://drive.google.com/file/d/1vhco9f1EE7ijbgKuUKRPiY3UhUUEaDLQ/view?usp=sharing',
-        paperSectionLabel: 'Manuscript',
-        paperLabel: 'First-Passage-Based Last-Passage — Manuscript',
+        paperUrl: 'https://drive.google.com/file/d/YOUR_PAPER_ID/view',
+        paperSectionLabel: 'Working Paper',
+        paperLabel: 'AI Semiconductor Forecasting — Working Paper',
     },
     {
         id: 'quantum-entanglement',
@@ -176,23 +187,25 @@ const researchProjects: ProjectData[] = [
         paperLabel: 'Quantum Entanglement in Optical Lattices — Thesis',
     },
     {
-        id: 'ai-semiconductor',
-        title: 'AI & Econometric Analysis of Semiconductor Markets',
-        shortDesc: 'Forecasting framework combining AI-based text analysis with econometric time-series models to extract predictive signals from large-scale semiconductor news data.',
-        fullDesc: 'This project develops a hybrid forecasting framework for semiconductor market analysis. Large-scale news and financial data are processed through NLP pipelines — using transformer-based sentiment analysis and topic modeling — to extract forward-looking signals. These signals are then integrated into classical econometric time-series models (VAR, ARIMAX) to produce market forecasts that outperform purely quantitative baselines across multiple prediction horizons.',
-        tech: ['Python', 'NLP', 'Transformers', 'ARIMAX', 'VAR', 'Pandas', 'NLTK', 'scikit-learn'],
-        image: mock05,
-        link: 'https://www.byuh.edu/',
-        category: 'AI · Economics',
-        keyFormula: 'yₜ = α + Σ βᵢ yₜ₋ᵢ  +  γ · SentimentScore(t)',
+        id: 'first-passage',
+        title: 'First-Passage-Based Last-Passage',
+        shortDesc: 'Monte Carlo algorithm to estimate electrostatic charge density on conductors by combining first-passage diffusion with last-passage boundary sampling.',
+        fullDesc: 'This research develops a novel Monte Carlo algorithm that estimates electrostatic charge density on conductor surfaces. The method innovatively combines first-passage diffusion processes — which efficiently simulate Brownian motion near boundaries — with last-passage sampling to precisely estimate surface charge distributions. This hybrid approach significantly reduces computational cost compared to classical boundary element methods while maintaining high accuracy for complex geometries.',
+        tech: ['Python', 'C', 'MPI', 'NumPy', 'Monte Carlo', 'Stochastic Processes'],
+        image: fplp_cover,
+        link: 'https://www.filmate.club/',
+        category: 'Computational Physics',
+        keyFormula: 'u(x) = 𝔼ₓ[ φ(Xτ) ]  —  Feynman-Kac representation',
         extraImages: [
-            { src: mock05, caption: '↑  Sentiment pipeline architecture  [ placeholder ]', wide: true },
-            { src: mock04, caption: 'Forecast accuracy vs. baseline  [ placeholder ]' },
-            { src: mock03, caption: 'News topic clustering  [ placeholder ]' },
+            { src: mock10, caption: '↑  Main simulation overview  [ placeholder — replace with diagram ]', wide: true },
+            { src: terminal, caption: 'C simulation code snapshot  [ placeholder ]' },
+            { src: mock05, caption: 'MPI parallelization snapshot  [ placeholder ]' },
         ],
-        paperUrl: 'https://drive.google.com/file/d/YOUR_PAPER_ID/view',
-        paperSectionLabel: 'Working Paper',
-        paperLabel: 'AI Semiconductor Forecasting — Working Paper',
+        videoSrc: walkOnPlanes,
+        videoLabel: 'First Passage Animation',
+        paperUrl: 'https://drive.google.com/file/d/1vhco9f1EE7ijbgKuUKRPiY3UhUUEaDLQ/view?usp=sharing',
+        paperSectionLabel: 'Manuscript',
+        paperLabel: 'First-Passage-Based Last-Passage — Manuscript',
     },
     {
         id: 'goas-dft',
@@ -393,19 +406,34 @@ function Project() {
         projects.map(project => (
             <div
                 key={project.id}
-                className={`project${expandedId === project.id ? ' project--active' : ''}`}
+                className={`project${expandedId === project.id ? ' project--active' : ''}${project.status === 'planned' ? ' project--planned' : ''}`}
                 onClick={() => onCardClick(project.id)}
                 role="button"
                 tabIndex={0}
                 aria-expanded={expandedId === project.id}
                 onKeyDown={e => e.key === 'Enter' && onCardClick(project.id)}
             >
-                <div className="project-img">
-                    <img src={project.image} alt={`${project.title} thumbnail`} />
-                    <div className="project-img-overlay">
-                        <span>{expandedId === project.id ? 'Close' : 'Explore'}</span>
+                {project.status === 'planned' && (
+                    <div className="project-planned-img">
+                        <div className="project-planned-grid" aria-hidden="true">
+                            {Array.from({ length: 12 }).map((_, i) => (
+                                <div key={i} className="project-planned-cell" />
+                            ))}
+                        </div>
+                        <div className="project-planned-badge">In Preparation</div>
+                        <div className="project-img-overlay">
+                            <span>{expandedId === project.id ? 'Close' : 'Explore'}</span>
+                        </div>
                     </div>
-                </div>
+                )}
+                {project.status !== 'planned' && (
+                    <div className="project-img">
+                        <img src={project.image} alt={`${project.title} thumbnail`} />
+                        <div className="project-img-overlay">
+                            <span>{expandedId === project.id ? 'Close' : 'Explore'}</span>
+                        </div>
+                    </div>
+                )}
                 <div className="project-body">
                     <span className="project-category">{project.category}</span>
                     <h2>{project.title}</h2>
