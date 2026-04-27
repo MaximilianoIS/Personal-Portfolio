@@ -41,7 +41,7 @@ function Main() {
       <div className="about-section">
 
         {/* Animated wave replaces static PNG */}
-        <AnimatedWave darkMode={false} />
+        <AnimatedWave />
 
         <div className="image-wrapper">
           <img src={avatar} alt="Avatar" />

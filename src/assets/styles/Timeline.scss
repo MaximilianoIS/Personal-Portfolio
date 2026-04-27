@@ -1,192 +1,215 @@
-// ─── Timeline container ───────────────────────────────────────
-.history-timeline {
+// ─── History card grid ────────────────────────────────────────
+.history-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 1rem;
+}
+
+// ─── Individual card ──────────────────────────────────────────
+.history-card {
+    position: relative;
     display: flex;
     flex-direction: column;
-    margin-top: 0.5rem;
-}
-
-// ─── Single entry row ─────────────────────────────────────────
-.history-entry {
-    display: flex;
-    gap: 24px;
-    align-items: flex-start;
-}
-
-// ─── Left column: logo + connector ───────────────────────────
-.history-left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-shrink: 0;
-}
-
-// Rounded-square logo — same style as Expertise icons
-.history-logo {
-    width: 52px;
-    height: 52px;
-    border-radius: 10px;
-    border: 1px solid rgba(201, 168, 76, 0.25);
-    background: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    gap: 0;
+    padding: 22px 24px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(91, 141, 184, 0.13);
+    background: rgba(255, 255, 255, 0.58);
+    backdrop-filter: blur(10px);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
     overflow: hidden;
-    flex-shrink: 0;
-    padding: 7px;
 
-    img {
-        width: 100%;
-        height: 100%;
+    // Left accent bar — blue for research, slate for education
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        border-radius: 12px 0 0 12px;
+        background: linear-gradient(to bottom, #5b8db8, rgba(91, 141, 184, 0.2));
+    }
+
+    &--education {
+        background: rgba(91, 141, 184, 0.06);
+        border-color: rgba(91, 141, 184, 0.22);
+    }
+
+    &--education::before {
+        background: linear-gradient(to bottom, #7eadd4, rgba(126, 173, 212, 0.15));
+        width: 4px;
+    }
+
+    // small "DEGREE" badge on the date slot for education cards
+    &--education &__date {
+        font-family: var(--font-mono);
+        font-size: 0.58rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #fff;
+        background: #5b8db8;
+        border-radius: 4px;
+        padding: 3px 9px;
+        align-self: center;
+        line-height: 1.6;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 32px rgba(91, 141, 184, 0.12);
+        border-color: rgba(91, 141, 184, 0.3);
+    }
+
+    // ── Header: logo + org + year ───────────────────────────
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+    }
+
+    &__logo {
+        width: 36px;
+        height: 36px;
+        border-radius: 7px;
         object-fit: contain;
+        background: #fff;
+        border: 1px solid rgba(91, 141, 184, 0.18);
+        padding: 4px;
+        flex-shrink: 0;
+    }
+
+    &__org-block {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        min-width: 0;
+    }
+
+    &__org {
+        font-family: var(--font-body);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #5b8db8;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__location {
+        font-family: var(--font-mono);
+        font-size: 0.58rem;
+        color: #9aabb8;
+        letter-spacing: 0.04em;
+        margin-top: 1px;
+    }
+
+    &__date {
+        font-family: var(--font-display);
+        font-size: 1.6rem;
+        font-weight: 400;
+        color: rgba(91, 141, 184, 0.55);
+        flex-shrink: 0;
+        line-height: 1;
+        align-self: flex-start;
+    }
+
+    // ── Role ────────────────────────────────────────────────
+    &__role {
+        font-family: var(--font-display) !important;
+        font-size: 1.05rem !important;
+        font-style: italic !important;
+        font-weight: 400 !important;
+        color: #1a2535 !important;
+        margin: 0 0 4px !important;
+        line-height: 1.25 !important;
+    }
+
+    // ── Duration ────────────────────────────────────────────
+    &__duration {
+        font-family: var(--font-mono);
+        font-size: 0.58rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #9aabb8;
+        margin-bottom: 12px;
         display: block;
     }
-}
 
-// Thin gold line connecting entries
-.history-connector {
-    width: 1px;
-    flex: 1;
-    min-height: 28px;
-    background: linear-gradient(
-        to bottom,
-        rgba(201, 168, 76, 0.3) 0%,
-        rgba(201, 168, 76, 0.08) 100%
-    );
-    margin: 6px 0;
-}
-
-// ─── Right column: text ───────────────────────────────────────
-.history-body {
-    flex: 1;
-    padding-top: 6px;
-    padding-bottom: 2.8rem;
-
-    .history-entry:last-child & {
-        padding-bottom: 0;
-    }
-}
-
-// Date · Location · Tag row
-.history-meta {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 5px;
-}
-
-.history-date {
-    font-family: var(--font-mono);
-    font-size: 0.67rem;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #c9a84c;
-}
-
-.history-sep {
-    color: var(--text-muted);
-    font-size: 0.65rem;
-}
-
-.history-location {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.07em;
-    color: var(--text-muted);
-}
-
-.history-tag {
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #c9a84c;
-    background: rgba(201, 168, 76, 0.1);
-    border: 1px solid rgba(201, 168, 76, 0.2);
-    border-radius: 3px;
-    padding: 1px 7px;
-}
-
-// Organisation name
-.history-org {
-    font-family: var(--font-body);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 3px;
-}
-
-// Role title — uses global h3 (Cormorant Garamond italic)
-h3.history-role {
-    margin: 0 0 8px !important;
-    font-size: clamp(1rem, 1.8vw, 1.2rem) !important;
-}
-
-// Description block — subtle card with left gold accent
-.history-desc-block {
-    margin-top: 10px;
-    padding: 12px 16px;
-    background: rgba(201, 168, 76, 0.04);
-    border-left: 2px solid rgba(201, 168, 76, 0.35);
-    border-radius: 0 6px 6px 0;
-}
-
-p.history-desc {
-    font-size: 0.855rem !important;
-    line-height: 1.78 !important;
-    margin: 0 !important;
-    color: var(--text-secondary) !important;
-}
-
-// ─── Light mode ──────────────────────────────────────────────
-.light-mode {
-    .history-logo {
-        background: #ffffff;
-        border-color: rgba(201, 168, 76, 0.22);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    // ── Description ─────────────────────────────────────────
+    &__desc {
+        font-family: var(--font-body) !important;
+        font-size: 0.8rem !important;
+        line-height: 1.72 !important;
+        color: #4a5a6a !important;
+        margin: 0 0 14px !important;
+        flex: 1;
     }
 
-    .history-org {
-        color: #9a9aaa;
+    // ── Tags ────────────────────────────────────────────────
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: auto;
     }
 
-    .history-desc-block {
-        background: rgba(201, 168, 76, 0.05);
-        border-left-color: rgba(201, 168, 76, 0.4);
-    }
-
-    p.history-desc {
-        color: #5a5a6a !important;
+    &__tag {
+        font-family: var(--font-mono);
+        font-size: 0.57rem;
+        font-weight: 600;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: #5b8db8;
+        background: rgba(91, 141, 184, 0.1);
+        border: 1px solid rgba(91, 141, 184, 0.2);
+        border-radius: 3px;
+        padding: 2px 7px;
     }
 }
 
 // ─── Dark mode ───────────────────────────────────────────────
-.dark-mode {
-    .history-logo {
-        background: #ffffff;
+.dark-mode .history-card {
+    background: rgba(12, 16, 24, 0.65);
+    border-color: rgba(91, 141, 184, 0.1);
+
+    &:hover {
+        border-color: rgba(91, 141, 184, 0.28);
+        box-shadow: 0 10px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    &__role     { color: #c8d8ec !important; }
+    &__desc     { color: #7a90a8 !important; }
+    &__org      { color: #7eadd4; }
+    &__location { color: #4a5a6a; }
+    &__date     { color: rgba(91, 141, 184, 0.45); }
+    &__logo     { background: #fff; }
+    &__tag {
+        color: #7eadd4;
+        background: rgba(91, 141, 184, 0.08);
+        border-color: rgba(91, 141, 184, 0.15);
+    }
+}
+
+.dark-mode .history-card--education {
+    background: rgba(91, 141, 184, 0.07);
+    border-color: rgba(91, 141, 184, 0.2);
+
+    .history-card__date {
+        background: rgba(91, 141, 184, 0.7);
+        color: #e8f2fa;
     }
 }
 
 // ─── Responsive ──────────────────────────────────────────────
-@media (max-width: 600px) {
-    .history-entry {
+@media (max-width: 768px) {
+    .history-grid {
+        grid-template-columns: 1fr;
         gap: 16px;
-    }
-
-    .history-logo {
-        width: 42px;
-        height: 42px;
-        border-radius: 8px;
-    }
-
-    .history-meta {
-        flex-wrap: wrap;
-    }
-
-    .history-tag {
-        display: none;
     }
 }

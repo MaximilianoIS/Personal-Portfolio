@@ -5,44 +5,27 @@ import PsychologyOutlinedIcon from '@mui/icons-material/PsychologyOutlined';
 import Chip from '@mui/material/Chip';
 import '../assets/styles/Expertise.scss';
 
-const labelsHPC = [
-    "Python",
-    "C / C++",
-    "Fortran 90",
-    "MATLAB",
-    "Open MPI",
-    "Monte Carlo",
-    "Sparse Matrices",
-    "GPU Acceleration",
-    "Mathematica",
-    "Linux",
-    "Docker",
-    "LaTeX",
-];
+const BLUE = '#5b8db8';
 
-const labelsQuantum = [
-    "Qiskit",
-    "Exact Diagonalization",
-    "Quantum Dynamics",
-    "Spin-orbit Coupling",
-    "Many-body Physics",
-    "Quantum Espresso",
-    "Quantum Information",
-    "LabVIEW",
-];
-
-const labelsAI = [
-    "PyTorch",
-    "Scikit-learn",
-    "Graph Neural Networks",
-    "LLM Fine-tuning",
-    "NLP",
-    "RAG Systems",
-    "Hugging Face",
-    "LangChain",
-    "Pandas",
-    "Time-series Analysis",
-    "Uncertainty Quantification",
+const skills = [
+    {
+        icon: <PsychologyOutlinedIcon sx={{ fontSize: '1.9rem', color: BLUE }} />,
+        title: 'AI for Science & Research',
+        desc: 'Applying ML and deep learning to scientific and economic problems — from physics-informed models and GNNs to NLP pipelines and LLM-based RAG systems.',
+        labels: ['PyTorch', 'Scikit-learn', 'GNN', 'LLM Fine-tuning', 'NLP', 'RAG', 'Hugging Face', 'LangChain', 'Time-series', 'UQ'],
+    },
+    {
+        icon: <MemoryOutlinedIcon sx={{ fontSize: '1.9rem', color: BLUE }} />,
+        title: 'HPC & Mathematical Modeling',
+        desc: 'High-performance numerical algorithms for scientific computing — parallel programming (MPI), Monte Carlo methods, sparse matrix techniques on Linux HPC clusters.',
+        labels: ['Python', 'C / C++', 'Fortran 90', 'Open MPI', 'Monte Carlo', 'Sparse Matrices', 'GPU', 'MATLAB', 'Mathematica', 'LaTeX'],
+    },
+    {
+        icon: <BubbleChartOutlinedIcon sx={{ fontSize: '1.9rem', color: BLUE }} />,
+        title: 'Quantum Simulation & Physics',
+        desc: 'Quantum many-body systems, spin-orbit–coupled optical lattices, entanglement dynamics. Exact diagonalization, quantum circuit simulation, experimental optics.',
+        labels: ['Qiskit', 'Exact Diag.', 'Quantum Dynamics', 'Spin-orbit', 'Many-body', 'Quantum ESPRESSO', 'LabVIEW'],
+    },
 ];
 
 function Expertise() {
@@ -51,64 +34,21 @@ function Expertise() {
         <div className="skills-container">
             <h1>Expertise</h1>
             <div className="skills-grid">
-
-                <div className="skill">
-                    <div className="skill-icon">
-                        <MemoryOutlinedIcon sx={{ fontSize: '2.2rem', color: '#c9a84c' }} />
+                {skills.map((s, i) => (
+                    <div className="skill" key={i}>
+                        <div className="skill-icon">
+                            {s.icon}
+                        </div>
+                        <h3 className="skill-title">{s.title}</h3>
+                        <p className="skill-desc">{s.desc}</p>
+                        <div className="flex-chips">
+                            <span className="chip-title">Tech stack:</span>
+                            {s.labels.map((label, j) => (
+                                <Chip key={j} className='chip' label={label} />
+                            ))}
+                        </div>
                     </div>
-                    <h3>HPC & Mathematical Modeling</h3>
-                    <p>
-                        I develop high-performance numerical algorithms for scientific computing,
-                        combining parallel programming (Open MPI), Monte Carlo methods, and sparse
-                        matrix techniques. Experienced in scientific programming with Python,
-                        C/C++, and Fortran 90 on Linux-based HPC environments.
-                    </p>
-                    <div className="flex-chips">
-                        <span className="chip-title">Tech stack:</span>
-                        {labelsHPC.map((label, index) => (
-                            <Chip key={index} className='chip' label={label} />
-                        ))}
-                    </div>
-                </div>
-
-                <div className="skill">
-                    <div className="skill-icon">
-                        <BubbleChartOutlinedIcon sx={{ fontSize: '2.2rem', color: '#c9a84c' }} />
-                    </div>
-                    <h3>Quantum Simulation & Physics</h3>
-                    <p>
-                        I investigate quantum many-body systems, including spin-orbit–coupled
-                        optical lattices and quantum entanglement dynamics. Skilled in implementing
-                        exact diagonalization and quantum circuit simulations, with hands-on
-                        experience in experimental optics and laser systems.
-                    </p>
-                    <div className="flex-chips">
-                        <span className="chip-title">Tech stack:</span>
-                        {labelsQuantum.map((label, index) => (
-                            <Chip key={index} className='chip' label={label} />
-                        ))}
-                    </div>
-                </div>
-
-                <div className="skill">
-                    <div className="skill-icon">
-                        <PsychologyOutlinedIcon sx={{ fontSize: '2.2rem', color: '#c9a84c' }} />
-                    </div>
-                    <h3>AI for Science & Research</h3>
-                    <p>
-                        I apply machine learning and deep learning to scientific and economic
-                        problems — from physics-informed models and graph neural networks to
-                        NLP pipelines for large-scale media analysis. Experience building
-                        LLM-based and RAG systems for research and real-world applications.
-                    </p>
-                    <div className="flex-chips">
-                        <span className="chip-title">Tech stack:</span>
-                        {labelsAI.map((label, index) => (
-                            <Chip key={index} className='chip' label={label} />
-                        ))}
-                    </div>
-                </div>
-
+                ))}
             </div>
         </div>
     </div>

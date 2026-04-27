@@ -10,10 +10,10 @@
   --ivory-2: #f7f0e8;
   --ivory-text: #1a1410;
 
-  // Accent — warm financial gold
-  --gold: #c9a84c;
-  --gold-light: #dfc06a;
-  --gold-dim: rgba(201, 168, 76, 0.12);
+  // Accent — slate blue
+  --gold: #5b8db8;
+  --gold-light: #7eadd4;
+  --gold-dim: rgba(91, 141, 184, 0.12);
 
   // Text
   --text-primary: #e8ecf2;
@@ -194,7 +194,7 @@ button {
 
     &:hover {
       color: var(--text-primary) !important;
-      background: rgba(201, 168, 76, 0.08) !important;
+      background: rgba(91, 141, 184, 0.08) !important;
     }
   }
 
@@ -291,7 +291,7 @@ button {
 
 .chip {
   background: var(--gold-dim) !important;
-  border: 1px solid rgba(201, 168, 76, 0.22) !important;
+  border: 1px solid rgba(91, 141, 184, 0.22) !important;
   border-radius: 2px !important;
   color: var(--text-primary) !important;
   font-family: var(--font-mono) !important;
@@ -301,7 +301,7 @@ button {
   transition: var(--t) !important;
 
   &:hover {
-    background: rgba(201, 168, 76, 0.22) !important;
+    background: rgba(91, 141, 184, 0.22) !important;
     border-color: var(--gold) !important;
     color: var(--gold-light) !important;
   }
@@ -322,7 +322,7 @@ button {
 .project-card,
 .card {
   background: var(--ink-card);
-  border: 1px solid rgba(201, 168, 76, 0.12);
+  border: 1px solid rgba(91, 141, 184, 0.12);
   border-radius: 3px;
   transition: var(--t);
   position: relative;
@@ -341,7 +341,7 @@ button {
 
   &:hover {
     transform: translateY(-2px);
-    border-color: rgba(201, 168, 76, 0.32);
+    border-color: rgba(91, 141, 184, 0.32);
     box-shadow: 0 10px 36px rgba(0, 0, 0, 0.4);
 
     &::before {
@@ -397,13 +397,13 @@ div[class*="MuiFilledInput"] textarea {
 }
 
 fieldset {
-  border-color: rgba(201, 168, 76, 0.18) !important;
+  border-color: rgba(91, 141, 184, 0.18) !important;
   border-radius: 8px !important;
   transition: border-color 0.22s ease !important;
 }
 
 div[class*="MuiOutlinedInput"]:hover fieldset {
-  border-color: rgba(201, 168, 76, 0.4) !important;
+  border-color: rgba(91, 141, 184, 0.4) !important;
 }
 
 div[class*="Mui-focused"] fieldset {
@@ -430,7 +430,7 @@ input[type="email"],
 input[type="tel"] {
   background: var(--ink-card) !important;
   color: var(--text-primary) !important;
-  border: 1px solid rgba(201, 168, 76, 0.18) !important;
+  border: 1px solid rgba(91, 141, 184, 0.18) !important;
   border-radius: 8px !important;
   font-family: var(--font-body) !important;
   font-size: 0.9rem !important;
@@ -445,19 +445,19 @@ input[type="tel"] {
   }
 
   &:hover {
-    border-color: rgba(201, 168, 76, 0.38) !important;
+    border-color: rgba(91, 141, 184, 0.38) !important;
   }
 
   &:focus {
     border-color: var(--gold) !important;
-    box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.08) !important;
+    box-shadow: 0 0 0 3px rgba(91, 141, 184, 0.08) !important;
   }
 }
 
 textarea {
   background: var(--ink-card) !important;
   color: var(--text-primary) !important;
-  border: 1px solid rgba(201, 168, 76, 0.18) !important;
+  border: 1px solid rgba(91, 141, 184, 0.18) !important;
   border-radius: 8px !important;
   font-family: var(--font-body) !important;
   font-size: 0.9rem !important;
@@ -475,12 +475,12 @@ textarea {
   }
 
   &:hover {
-    border-color: rgba(201, 168, 76, 0.38) !important;
+    border-color: rgba(91, 141, 184, 0.38) !important;
   }
 
   &:focus {
     border-color: var(--gold) !important;
-    box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.08) !important;
+    box-shadow: 0 0 0 3px rgba(91, 141, 184, 0.08) !important;
   }
 }
 
@@ -500,20 +500,20 @@ button.send-btn {
   border-radius: 8px !important;
   padding: 10px 44px !important;
   min-width: 150px !important;
-  box-shadow: 0 4px 14px rgba(201, 168, 76, 0.2) !important;
+  box-shadow: 0 4px 14px rgba(91, 141, 184, 0.2) !important;
   transition: var(--t) !important;
   cursor: pointer !important;
   letter-spacing: 0.01em !important;
 
   &:hover {
     transform: translateY(-1px) !important;
-    box-shadow: 0 6px 20px rgba(201, 168, 76, 0.3) !important;
+    box-shadow: 0 6px 20px rgba(91, 141, 184, 0.3) !important;
     background: var(--gold-light) !important;
   }
 
   &:active {
     transform: translateY(0) !important;
-    box-shadow: 0 2px 8px rgba(201, 168, 76, 0.15) !important;
+    box-shadow: 0 2px 8px rgba(91, 141, 184, 0.15) !important;
   }
 
   svg {
@@ -573,7 +573,7 @@ button.send-btn {
       border-radius: 6px !important;
 
       &:hover {
-        background: rgba(201, 168, 76, 0.08) !important;
+        background: rgba(91, 141, 184, 0.08) !important;
         color: var(--ivory-text) !important;
       }
     }
@@ -597,7 +597,7 @@ button.send-btn {
   }
 
   .about-section {
-    background-image: url("./assets/images/bg-light.png");
+    background-image: none;
 
     h1,
     h2,
@@ -615,12 +615,12 @@ button.send-btn {
   }
 
   .chip {
-    background: rgba(201, 168, 76, 0.09) !important;
-    border-color: rgba(201, 168, 76, 0.22) !important;
+    background: rgba(91, 141, 184, 0.09) !important;
+    border-color: rgba(91, 141, 184, 0.22) !important;
     color: var(--ivory-text) !important;
 
     &:hover {
-      background: rgba(201, 168, 76, 0.18) !important;
+      background: rgba(91, 141, 184, 0.18) !important;
     }
   }
 
@@ -629,13 +629,13 @@ button.send-btn {
   }
 
   .vertical-timeline::before {
-    background: rgba(201, 168, 76, 0.3) !important;
+    background: rgba(91, 141, 184, 0.3) !important;
   }
 
   .vertical-timeline-element-content,
   .vertical-timeline-element-content.bounce-in {
     background: #fff !important;
-    border-color: rgba(201, 168, 76, 0.18) !important;
+    border-color: rgba(91, 141, 184, 0.18) !important;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.07) !important;
   }
 
@@ -655,11 +655,11 @@ button.send-btn {
   .vertical-timeline-element-icon {
     background: var(--ivory) !important;
     border-color: var(--gold) !important;
-    box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15) !important;
+    box-shadow: 0 0 0 3px rgba(91, 141, 184, 0.15) !important;
   }
 
   .vertical-timeline-element-content-arrow {
-    border-right-color: rgba(201, 168, 76, 0.18) !important;
+    border-right-color: rgba(91, 141, 184, 0.18) !important;
   }
 
   div[class*="MuiInputBase"],
@@ -696,7 +696,7 @@ button.send-btn {
   .project-card,
   .card {
     background: #fff;
-    border-color: rgba(201, 168, 76, 0.16);
+    border-color: rgba(91, 141, 184, 0.16);
   }
 }
 
@@ -730,11 +730,11 @@ button.send-btn {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(201, 168, 76, 0.4);
+  background: rgba(91, 141, 184, 0.4);
   border-radius: 2px;
 }
 
 ::selection {
-  background: rgba(201, 168, 76, 0.2);
+  background: rgba(91, 141, 184, 0.2);
   color: var(--text-primary);
 }

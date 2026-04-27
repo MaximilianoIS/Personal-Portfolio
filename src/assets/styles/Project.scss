@@ -25,9 +25,9 @@
         width: 36px;
         height: 36px;
         border-radius: 50%;
-        border: 1px solid rgba(201, 168, 76, 0.3);
-        background: rgba(201, 168, 76, 0.06);
-        color: #c9a84c;
+        border: 1px solid rgba(91, 141, 184, 0.3);
+        background: rgba(91, 141, 184, 0.06);
+        color: #5b8db8;
         font-size: 1rem;
         cursor: pointer;
         display: flex;
@@ -37,8 +37,8 @@
         line-height: 1;
 
         &:hover {
-          background: rgba(201, 168, 76, 0.16);
-          border-color: rgba(201, 168, 76, 0.55);
+          background: rgba(91, 141, 184, 0.16);
+          border-color: rgba(91, 141, 184, 0.55);
           color: #dfc06a;
         }
 
@@ -71,7 +71,7 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: rgba(201, 168, 76, 0.4);
+    background: rgba(91, 141, 184, 0.4);
     border-radius: 2px;
   }
 }
@@ -94,13 +94,13 @@
   &:focus-visible {
     transform: translateY(-4px);
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
-    border-color: rgba(201, 168, 76, 0.45);
+    border-color: rgba(91, 141, 184, 0.45);
   }
 
   // Active / expanded state
   &.project--active {
-    border-color: rgba(201, 168, 76, 0.7);
-    box-shadow: 0 0 0 2px rgba(201, 168, 76, 0.25), 0 8px 28px rgba(0, 0, 0, 0.1);
+    border-color: rgba(91, 141, 184, 0.7);
+    box-shadow: 0 0 0 2px rgba(91, 141, 184, 0.25), 0 8px 28px rgba(0, 0, 0, 0.1);
     transform: translateY(-2px);
   }
 
@@ -156,7 +156,7 @@
     opacity: 1;
 
     span {
-      border-color: rgba(201, 168, 76, 0.8);
+      border-color: rgba(91, 141, 184, 0.8);
       color: #dfc06a;
     }
   }
@@ -171,7 +171,7 @@
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #c9a84c;
+      color: #5b8db8;
       margin-bottom: 6px;
     }
 
@@ -386,8 +386,8 @@ body.panel-open #navigation {
       display: flex;
       flex-direction: column;
       gap: 6px;
-      background: rgba(201, 168, 76, 0.07);
-      border-left: 3px solid #c9a84c;
+      background: rgba(91, 141, 184, 0.07);
+      border-left: 3px solid #5b8db8;
       border-radius: 0 10px 10px 0;
       padding: 16px 22px;
       margin-bottom: 28px;
@@ -397,7 +397,7 @@ body.panel-open #navigation {
         font-weight: 700;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: #c9a84c;
+        color: #5b8db8;
       }
 
       .formula-text {
@@ -512,21 +512,21 @@ body.panel-open #navigation {
       align-items: center;
       justify-content: center;
       gap: 14px;
-      border: 1px dashed rgba(201, 168, 76, 0.3);
+      border: 1px dashed rgba(91, 141, 184, 0.3);
       cursor: default;
 
       .play-btn-wrap {
         width: 56px;
         height: 56px;
         border-radius: 50%;
-        border: 2px solid rgba(201, 168, 76, 0.5);
-        background: rgba(201, 168, 76, 0.1);
+        border: 2px solid rgba(91, 141, 184, 0.5);
+        background: rgba(91, 141, 184, 0.1);
         display: flex;
         align-items: center;
         justify-content: center;
 
         .play-icon {
-          color: #c9a84c;
+          color: #5b8db8;
           font-size: 1.2rem;
           margin-left: 3px; // optical center for play triangle
         }
@@ -534,7 +534,7 @@ body.panel-open #navigation {
 
       .video-note {
         font-size: 0.75rem;
-        color: rgba(201, 168, 76, 0.6);
+        color: rgba(91, 141, 184, 0.6);
         letter-spacing: 0.04em;
         font-style: italic;
       }
@@ -555,7 +555,7 @@ body.panel-open #navigation {
       &__line {
         flex: 1;
         height: 1px;
-        background: rgba(201, 168, 76, 0.25);
+        background: rgba(91, 141, 184, 0.25);
       }
 
       &__title {
@@ -575,7 +575,7 @@ body.panel-open #navigation {
       margin: 0 32px 28px;
       border-radius: 12px;
       overflow: hidden;
-      border: 1px solid rgba(201, 168, 76, 0.3);
+      border: 1px solid rgba(91, 141, 184, 0.3);
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 
       .paper-embed-header {
@@ -583,13 +583,13 @@ body.panel-open #navigation {
         align-items: center;
         gap: 10px;
         padding: 10px 16px;
-        background: rgba(201, 168, 76, 0.06);
-        border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+        background: rgba(91, 141, 184, 0.06);
+        border-bottom: 1px solid rgba(91, 141, 184, 0.2);
 
         svg {
           width: 16px;
           height: 16px;
-          color: #c9a84c;
+          color: #5b8db8;
           flex-shrink: 0;
         }
 
@@ -608,7 +608,7 @@ body.panel-open #navigation {
 
         .paper-open-link {
           font-size: 0.72rem;
-          color: #c9a84c;
+          color: #5b8db8;
           text-decoration: none;
           font-weight: 600;
           letter-spacing: 0.03em;
@@ -669,14 +669,14 @@ body.panel-open #navigation {
 
         &--demo {
           background: transparent;
-          color: #c9a84c;
-          border: 1.5px solid rgba(201, 168, 76, 0.5);
+          color: #5b8db8;
+          border: 1.5px solid rgba(91, 141, 184, 0.5);
 
           &:hover {
-            background: rgba(201, 168, 76, 0.08);
-            border-color: #c9a84c;
+            background: rgba(91, 141, 184, 0.08);
+            border-color: #5b8db8;
             transform: translateY(-1px);
-            box-shadow: 0 4px 14px rgba(201, 168, 76, 0.15);
+            box-shadow: 0 4px 14px rgba(91, 141, 184, 0.15);
           }
         }
       }
@@ -701,8 +701,8 @@ body.panel-open #navigation {
         transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
 
         &:hover {
-          background: rgba(201, 168, 76, 0.12);
-          border-color: rgba(201, 168, 76, 0.45);
+          background: rgba(91, 141, 184, 0.12);
+          border-color: rgba(91, 141, 184, 0.45);
           color: #b8943c;
         }
       }
@@ -731,17 +731,17 @@ body.panel-open #navigation {
 // ─── Dark Mode ───────────────────────────────────────────────
 .dark-mode .projects-slider .project {
   background: #111520;
-  border-color: rgba(201, 168, 76, 0.1);
+  border-color: rgba(91, 141, 184, 0.1);
 
   &:hover,
   &:focus-visible {
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-    border-color: rgba(201, 168, 76, 0.32);
+    border-color: rgba(91, 141, 184, 0.32);
   }
 
   &.project--active {
-    border-color: rgba(201, 168, 76, 0.55);
-    box-shadow: 0 0 0 2px rgba(201, 168, 76, 0.18), 0 8px 28px rgba(0, 0, 0, 0.4);
+    border-color: rgba(91, 141, 184, 0.55);
+    box-shadow: 0 0 0 2px rgba(91, 141, 184, 0.18), 0 8px 28px rgba(0, 0, 0, 0.4);
   }
 
   .project-body {
@@ -782,14 +782,14 @@ body.panel-open #navigation {
     .detail-category { color: #6a7a8a; }
 
     .panel-formula {
-      background: rgba(201, 168, 76, 0.06);
+      background: rgba(91, 141, 184, 0.06);
       .formula-text { color: #d1d9e6; }
     }
 
     .media-section-title { color: #9ca3af; }
 
     .panel-section-separator {
-      &__line { background: rgba(201, 168, 76, 0.2); }
+      &__line { background: rgba(91, 141, 184, 0.2); }
       &__title { color: #d1d9e6; }
     }
 
@@ -800,10 +800,10 @@ body.panel-open #navigation {
     .media-item .media-caption { color: #4b5563; }
 
     .panel-paper-embed {
-      border-color: rgba(201, 168, 76, 0.2);
+      border-color: rgba(91, 141, 184, 0.2);
       .paper-embed-header {
-        background: rgba(201, 168, 76, 0.05);
-        border-bottom-color: rgba(201, 168, 76, 0.15);
+        background: rgba(91, 141, 184, 0.05);
+        border-bottom-color: rgba(91, 141, 184, 0.15);
         span { color: #9ca8bc; }
       }
       .paper-iframe { background: #1a1d26; }
@@ -814,8 +814,8 @@ body.panel-open #navigation {
       background: rgba(255, 255, 255, 0.05);
       border-color: rgba(255, 255, 255, 0.1);
       &:hover {
-        background: rgba(201, 168, 76, 0.12);
-        border-color: rgba(201, 168, 76, 0.4);
+        background: rgba(91, 141, 184, 0.12);
+        border-color: rgba(91, 141, 184, 0.4);
         color: #dfc06a;
       }
     }
