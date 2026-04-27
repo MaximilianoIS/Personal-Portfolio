@@ -90,98 +90,138 @@
 .news-strip {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 4px;
+    gap: 8px;
+    margin-top: 1.2rem;
 }
 
+// Event card: left color bar + date column + title
 .news-pill {
-    display: inline-flex;
+    display: inline-grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    gap: 10px;
-    padding: 8px 14px 8px 10px;
-    border-radius: 100px;
-    background: rgba(255, 255, 255, 0.72);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    backdrop-filter: blur(10px);
+    gap: 0;
     text-decoration: none;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    border-left: 3px solid var(--pill-color, #7c9bbf);
+    border-radius: 6px;
+    backdrop-filter: blur(12px);
+    max-width: 480px;
+    overflow: hidden;
     transition: all 0.2s ease;
-    max-width: max-content;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
 
     &:hover {
-        background: rgba(255, 255, 255, 0.92);
-        border-color: var(--pill-color, #7c9bbf);
-        box-shadow: 0 4px 18px rgba(0,0,0,0.1);
-        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.85);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        transform: translateX(2px);
+    }
+
+    // Date block on the left
+    &__date-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 14px;
+        border-right: 1px solid rgba(0,0,0,0.06);
+        min-width: 58px;
+        background: rgba(var(--pill-color-rgb, 124,155,191), 0.07);
+
+        .month {
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--pill-color, #7c9bbf);
+        }
+        .day {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 500;
+            color: #1a1410;
+            line-height: 1;
+            margin-top: 1px;
+        }
+    }
+
+    // Main content
+    &__body {
+        padding: 9px 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
     }
 
     &__badge {
         font-family: var(--font-mono);
-        font-size: 0.58rem;
-        font-weight: 600;
+        font-size: 0.54rem;
+        font-weight: 700;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: #fff;
-        background: var(--pill-color, #7c9bbf);
-        padding: 3px 9px;
-        border-radius: 100px;
-        flex-shrink: 0;
-        // pulsing dot
+        color: var(--pill-color, #7c9bbf);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
         &::before {
             content: '';
-            display: inline-block;
             width: 5px;
             height: 5px;
-            background: rgba(255,255,255,0.85);
+            background: var(--pill-color, #7c9bbf);
             border-radius: 50%;
-            margin-right: 5px;
             animation: pulse-dot 1.8s ease-in-out infinite;
-            vertical-align: middle;
         }
     }
 
     &__title {
         font-family: var(--font-display);
-        font-size: 0.95rem;
+        font-size: 0.92rem;
         font-style: italic;
         color: #1a1410;
         font-weight: 500;
-        white-space: nowrap;
+        line-height: 1.2;
     }
 
     &__meta {
         font-family: var(--font-mono);
-        font-size: 0.65rem;
+        font-size: 0.6rem;
         color: #9a8a7a;
-        letter-spacing: 0.03em;
-        white-space: nowrap;
+        letter-spacing: 0.02em;
     }
 
+    // Arrow on the right
     &__icon {
-        font-size: 0.8rem !important;
-        color: #bbb;
+        font-size: 0.75rem !important;
+        color: #ccc;
         flex-shrink: 0;
-        margin-left: 2px;
+        padding-right: 12px;
+        transition: color 0.2s ease;
+    }
+
+    &:hover &__icon {
+        color: var(--pill-color, #7c9bbf);
     }
 }
 
 @keyframes pulse-dot {
     0%, 100% { opacity: 1;   transform: scale(1); }
-    50%       { opacity: 0.4; transform: scale(0.7); }
+    50%       { opacity: 0.35; transform: scale(0.6); }
 }
 
-// Dark mode news pill
+// Dark mode news card
 .dark-mode .news-pill {
-    background: rgba(20, 22, 30, 0.72);
-    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(18, 20, 28, 0.65);
+    border-color: rgba(255, 255, 255, 0.06);
+    border-left-color: var(--pill-color, #7c9bbf);
 
-    &:hover {
-        background: rgba(30, 34, 44, 0.92);
-        border-color: var(--pill-color, #7c9bbf);
-    }
+    &:hover { background: rgba(28, 32, 44, 0.88); }
 
-    &__title { color: #e8ecf2; }
-    &__meta  { color: #6a7a8a; }
+    &__date-block .day { color: #e8ecf2; }
+    &__title           { color: #e0e6f0; }
+    &__meta            { color: #6a7a8a; }
+    &__date-block      { border-right-color: rgba(255,255,255,0.06); }
 }
 
 // ── Responsive ───────────────────────────────────────────────

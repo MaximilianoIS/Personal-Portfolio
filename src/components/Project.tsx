@@ -426,21 +426,23 @@ function Project() {
                 onClick={e => e.stopPropagation()}
                 aria-label={`${project.title} details`}
             >
-                {/* Full-bleed hero image — Medium style */}
-                <img src={project.image} alt={project.title} className="panel-hero-img" />
-
-                {/* Floating close + reading time over image */}
+                {/* Fixed top bar: back button + reading time */}
                 <div className="panel-header">
-                    <button className="detail-close-btn" onClick={onClose} aria-label="Close">✕</button>
+                    <button className="detail-close-btn" onClick={onClose} aria-label="Close">Back</button>
                     <span className="panel-reading-time">{estimateReadingTime(project.fullDesc)}</span>
                 </div>
 
                 <div className="panel-body">
                     <div className="panel-content">
-                        {/* ── Meta + title ── */}
+                        {/* ── Title first, like Medium ── */}
                         <span className="detail-category">{project.category}</span>
                         <h2>{project.title}</h2>
                         <div className="panel-divider" />
+
+                        {/* ── Featured image inline, below title ── */}
+                        <div className="panel-featured-img">
+                            <img src={project.image} alt={project.title} />
+                        </div>
 
                         {/* ── Description ── */}
                         {project.fullDesc.split('\n\n').map((para, i) => (

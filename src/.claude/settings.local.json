@@ -2,7 +2,12 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:www.mhpc.it)",
-      "WebFetch(domain:eumaster4hpc.eu)"
+      "WebFetch(domain:eumaster4hpc.eu)",
+      "mcp__Claude_Preview__preview_start",
+      "WebFetch(domain:www.anthropic.com)",
+      "WebFetch(domain:www.qisca.org)",
+      "Read(//Users/maximilianoislas/Documents/react-portfolio-template-master/**)",
+      "Bash(npm run *)"
     ]
   }
 }

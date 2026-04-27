@@ -225,79 +225,76 @@ body.panel-open #navigation {
   animation: backdropFadeIn 0.25s ease forwards;
 }
 
-// ─── Panel (Medium article style) ───────────────────────────
+// ─── Fixed overlay backdrop — full screen, no padding ────────
+.project-detail-backdrop {
+  padding: 0 !important;
+  align-items: stretch !important;
+  justify-content: stretch !important;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+// ─── Panel (Medium article — full width, title first) ────────
 .project-detail-panel {
   position: relative;
-  background: #fdf7f2;
-  border-radius: 16px;
+  background: #faf6f1;
+  border-radius: 0;
   width: 100%;
-  max-width: 740px;
-  max-height: 90vh;
+  max-width: 100%;
+  height: 100vh;
+  max-height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.32);
-  animation: panelSlideUp 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  box-shadow: none;
+  animation: panelSlideUp 0.34s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 
-  // ─── Hero image (full-bleed, like Medium) ─────────────
-  .panel-hero-img {
-    width: 100%;
-    height: 260px;
-    object-fit: cover;
-    display: block;
-    flex-shrink: 0;
-    filter: brightness(0.9);
-  }
-
-  // ─── Top bar: back button + reading time ──────────────
+  // ─── Top bar: fixed header with close + reading time ──
   .panel-header {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    right: 14px;
+    position: relative;
     z-index: 20;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 14px 24px;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    background: rgba(250, 246, 241, 0.95);
+    backdrop-filter: blur(12px);
+    flex-shrink: 0;
   }
 
   .panel-reading-time {
     font-family: var(--font-mono);
     font-size: 0.6rem;
     letter-spacing: 0.08em;
-    color: rgba(255,255,255,0.75);
+    color: #9a8a7a;
     text-transform: uppercase;
-    background: rgba(0,0,0,0.35);
-    padding: 4px 10px;
-    border-radius: 100px;
-    backdrop-filter: blur(8px);
   }
 
-  // ─── Close button ────────────────────────────────────────
+  // ─── Close button ─────────────────────────────────────
   .detail-close-btn {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 1.5px solid rgba(255,255,255,0.5);
-    background: rgba(0,0,0,0.35);
-    color: #fff;
-    font-size: 0.7rem;
-    cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: center;
-    transition: background 0.2s ease, transform 0.22s ease;
-    line-height: 1;
-    flex-shrink: 0;
-    backdrop-filter: blur(8px);
+    gap: 7px;
+    padding: 6px 14px 6px 10px;
+    border-radius: 100px;
+    border: 1px solid rgba(0,0,0,0.12);
+    background: transparent;
+    color: #4a3f35;
+    font-size: 0.72rem;
+    font-family: var(--font-body);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    letter-spacing: 0.01em;
 
-    &:hover {
-      background: rgba(0,0,0,0.6);
-      transform: scale(1.08) rotate(90deg);
+    &::before {
+      content: '←';
+      font-size: 0.9rem;
     }
 
-    &:active {
-      transform: scale(0.9) rotate(90deg);
+    &:hover {
+      background: rgba(0,0,0,0.05);
+      border-color: rgba(0,0,0,0.2);
     }
   }
 
@@ -315,16 +312,17 @@ body.panel-open #navigation {
     }
 
     &::-webkit-scrollbar-thumb {
-      background: rgba(160, 140, 120, 0.35);
+      background: rgba(160, 140, 120, 0.3);
       border-radius: 4px;
     }
   }
 
-  // ─── Article-style content — Medium reading width ───────
+  // ─── Article layout — Medium-style centered column ──────
   .panel-content {
-    padding: 36px 52px 52px;
-    max-width: 660px;
+    padding: 56px 24px 80px;
+    max-width: 720px;
     margin: 0 auto;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 0;
@@ -355,6 +353,22 @@ body.panel-open #navigation {
       background: rgba(160, 130, 100, 0.35);
       border-radius: 2px;
       margin: 18px 0 22px;
+    }
+
+    // ── Featured image — inline below title ──────────────
+    .panel-featured-img {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 6px 0 32px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+
+      img {
+        width: 100%;
+        max-height: 380px;
+        object-fit: cover;
+        display: block;
+      }
     }
 
     // Medium-style body text
@@ -747,7 +761,20 @@ body.panel-open #navigation {
 }
 
 .dark-mode .project-detail-panel {
-  background: #0e1117;
+  background: #0d0f14;
+
+  .panel-header {
+    background: rgba(13, 15, 20, 0.95);
+    border-bottom-color: rgba(255,255,255,0.06);
+
+    .detail-close-btn {
+      color: #c8d0dc;
+      border-color: rgba(255,255,255,0.12);
+      &:hover { background: rgba(255,255,255,0.06); }
+    }
+
+    .panel-reading-time { color: #5a6a7a; }
+  }
 
   .panel-content {
     h2 { color: #e8ecf2; }

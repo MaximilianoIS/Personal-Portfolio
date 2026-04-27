@@ -58,7 +58,9 @@ function Main() {
 
           {/* ── News / Events strip ── */}
           <div className="news-strip">
-            {newsItems.map((item, i) => (
+            {newsItems.map((item, i) => {
+              const [month, day] = item.date.split(' ');
+              return (
               <a
                 key={i}
                 href={item.url}
@@ -67,14 +69,24 @@ function Main() {
                 className="news-pill"
                 style={{ '--pill-color': typeColors[item.type] } as React.CSSProperties}
               >
-                <span className="news-pill__badge">{item.label}</span>
-                <span className="news-pill__title">{item.title}</span>
-                <span className="news-pill__meta">
-                  {item.date}{item.location ? ` · ${item.location}` : ''}
-                </span>
+                {/* Date block */}
+                <div className="news-pill__date-block">
+                  <span className="month">{month}</span>
+                  <span className="day">{day?.replace(',','')}</span>
+                </div>
+
+                {/* Body */}
+                <div className="news-pill__body">
+                  <span className="news-pill__badge">{item.label}</span>
+                  <span className="news-pill__title">{item.title}</span>
+                  {item.location && (
+                    <span className="news-pill__meta">{item.location}</span>
+                  )}
+                </div>
+
                 <OpenInNewIcon className="news-pill__icon" />
               </a>
-            ))}
+            )})}
           </div>
 
           <div className="mobile_social_icons">
