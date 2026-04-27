@@ -414,6 +414,11 @@ function Project() {
             </div>
         ));
 
+    const estimateReadingTime = (text: string) => {
+        const words = text.trim().split(/\s+/).length;
+        return `${Math.max(1, Math.ceil(words / 200))} min read`;
+    };
+
     const renderDetailPanel = (project: ProjectData, onClose: () => void) => (
         <div className="project-detail-backdrop" onClick={onClose} aria-modal="true" role="dialog">
             <div
@@ -421,9 +426,13 @@ function Project() {
                 onClick={e => e.stopPropagation()}
                 aria-label={`${project.title} details`}
             >
-                {/* Fixed header strip — X button always visible */}
+                {/* Full-bleed hero image — Medium style */}
+                <img src={project.image} alt={project.title} className="panel-hero-img" />
+
+                {/* Floating close + reading time over image */}
                 <div className="panel-header">
                     <button className="detail-close-btn" onClick={onClose} aria-label="Close">✕</button>
+                    <span className="panel-reading-time">{estimateReadingTime(project.fullDesc)}</span>
                 </div>
 
                 <div className="panel-body">
