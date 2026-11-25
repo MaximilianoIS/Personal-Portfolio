@@ -39,7 +39,7 @@ export const intro = {
 export interface NewsItem { date: string; text: string; }
 
 export const news: NewsItem[] = [
-    { date: '[[Nov 2026]]', text: 'Excellence Award (aT President’s Award) at the AI Agricultural Price Forecasting Online Hackathon (aT), leading the IMPACT Lab team on vegetable price forecasting.' },
+    { date: 'Nov 2026', text: 'Excellence Award (aT President’s Award) at the AI Agricultural Price Forecasting Online Hackathon (aT), leading the IMPACT Lab team on vegetable price forecasting.' },
     { date: 'Sep 2026', text: 'Attended UN ESCAP CICTSTI-5, Bangkok.' },
     { date: 'Aug 2026', text: 'Started the M.S. in AI Policy & Strategy at GIST, IMPACT Lab.' },
     { date: 'Jul 2026', text: 'Attended the Asian Quantitative Finance Conference (AQFC), Pohang.' },
@@ -50,13 +50,13 @@ export interface Award { date: string; title: string; detail: string; link?: str
 
 export const awards: Award[] = [
     {
-        date: '[[Nov 2026]]',
+        date: 'Nov 2026',
         title: '**Excellence Award**, aT President’s Award',
         detail: 'AI Agricultural Price Forecasting Online Hackathon, Korea Agro-Fisheries & Food Trade Corp. Led the IMPACT Lab team on vegetable price forecasting.',
         logos: [{ src: atLogo, alt: 'aT — Korea Agro-Fisheries & Food Trade Corp.', className: 'awards__logo--at' }],
     },
     {
-        date: '2025',
+        date: 'Feb 2025',
         title: '**1st Place**, MIT iQuHACK 2025',
         detail: 'Quantum Rings remote challenge: integer factorization with Shor’s algorithm.',
         link: 'https://www.iquise.mit.edu/iQuHACK/2025-01-31',
@@ -98,7 +98,7 @@ export const papers: Paper[] = [
             name: 'Expert Systems with Applications',
             publisher: 'Elsevier',
             logo: elsevierLogo,
-            rank: 'Q1 · [[Economics]]',
+            rank: 'Q1 · Artificial Intelligence',
         },
         result: 'Macro-financial signals give ==the only consistent gain (mean AUC 0.647 → 0.685)==; LLM sentiment adds nothing significant.',
         stats: [
