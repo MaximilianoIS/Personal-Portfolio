@@ -196,7 +196,7 @@ export interface Role { when: string; what: string; where: string; logo?: 'gist'
 
 export const experience: Role[] = [
     { when: 'Aug 2026 – Aug 2028 (exp.)', what: 'M.S., AI Policy & Strategy', where: 'AI X School, GIST · IMPACT Lab (Prof. Duk-Jo Kong)', logo: 'gist' },
-    { when: 'Oct 2025 – [[Jul 2026]]', what: 'Research Intern, NLP & AI', where: 'IMPACT Lab, GIST', logo: 'gist' },
+    { when: 'Oct 2025 – Jul 2026', what: 'Research Intern, NLP & AI', where: 'IMPACT Lab, GIST', logo: 'gist' },
     { when: 'Jul – Sep 2025', what: 'Research Intern, Quantum Information', where: 'UNAM · Mexican Physics Society (remote)', logo: 'unam' },
     { when: 'Mar – Jun 2025', what: 'Research Intern, Computational Materials', where: 'AI Semiconductors Lab, GIST', logo: 'gist' },
     { when: 'Jul – Aug 2024', what: 'Research Intern, Experimental Physics', where: 'High Energy Density Physics Lab, GIST', logo: 'gist' },
