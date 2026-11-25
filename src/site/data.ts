@@ -7,6 +7,7 @@
 import elsevierLogo from '../assets/images/elsevier-logo.png';
 import iquhackDuck from '../assets/images/iquhack-duck.png';
 import mitLogo from '../assets/images/mit-logo.png';
+import foreignFlowsImg from '../assets/images/paper-foreign-flows.webp';
 import atLogo from '../assets/images/at-logo.svg';
 
 // Unsplash placeholders, cropped server-side to 3:2 so every card frames the same way
@@ -107,8 +108,8 @@ export const papers: Paper[] = [
             { value: 1.15, decimals: 2, suffix: 'M', label: 'news articles' },
             { value: 0.713, decimals: 3, label: 'best AUC (LightGBM)' },
         ],
-        image: img('1611974789855-9c2a0a7236a3'),
-        imageAlt: 'Placeholder: market chart',
+        image: foreignFlowsImg,
+        imageAlt: 'Samsung and SK hynix, Korea’s largest semiconductor firms',
         details: [
             { label: 'Problem', text: 'Predict next-day net-buy vs. net-sell direction of foreign investors across 150 KRX semiconductor firms, 2015–2026 (2,780 trading days).' },
             { label: 'Data', text: 'KRX investor flows; 1.15M news articles (NAVER News, MCST NOW platform, GDELT, NYT); 13 macro-financial variables.' },
