@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Personal-Portfolio/static/css/main.b2cd2cb2.css",
-    "main.js": "/Personal-Portfolio/static/js/main.f5e5728c.js",
+    "main.css": "/Personal-Portfolio/static/css/main.5598be4b.css",
+    "main.js": "/Personal-Portfolio/static/js/main.1c0d21df.js",
     "static/js/453.cba9e5b1.chunk.js": "/Personal-Portfolio/static/js/453.cba9e5b1.chunk.js",
     "static/media/unam-logo.png": "/Personal-Portfolio/static/media/unam-logo.1e707f759cbf8dee219f.png",
     "static/media/portrait.webp": "/Personal-Portfolio/static/media/portrait.0678c96425d2e6dbeea9.webp",
@@ -14,12 +14,12 @@
     "static/media/flag-mx.png": "/Personal-Portfolio/static/media/flag-mx.5d731b3d12902281cabb.png",
     "static/media/flag-kr.png": "/Personal-Portfolio/static/media/flag-kr.b6658f666a93dc7351f7.png",
     "index.html": "/Personal-Portfolio/index.html",
-    "main.b2cd2cb2.css.map": "/Personal-Portfolio/static/css/main.b2cd2cb2.css.map",
-    "main.f5e5728c.js.map": "/Personal-Portfolio/static/js/main.f5e5728c.js.map",
+    "main.5598be4b.css.map": "/Personal-Portfolio/static/css/main.5598be4b.css.map",
+    "main.1c0d21df.js.map": "/Personal-Portfolio/static/js/main.1c0d21df.js.map",
     "453.cba9e5b1.chunk.js.map": "/Personal-Portfolio/static/js/453.cba9e5b1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b2cd2cb2.css",
-    "static/js/main.f5e5728c.js"
+    "static/css/main.5598be4b.css",
+    "static/js/main.1c0d21df.js"
   ]
 }
