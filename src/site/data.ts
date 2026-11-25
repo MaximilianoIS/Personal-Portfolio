@@ -39,7 +39,7 @@ export const intro = {
 export interface NewsItem { date: string; text: string; }
 
 export const news: NewsItem[] = [
-    { date: '[[Nov 2026]]', text: 'Excellence Award (aT President’s Award) at the [[aT data hackathon — exact name]], leading the IMPACT Lab team on vegetable price forecasting.' },
+    { date: '[[Nov 2026]]', text: 'Excellence Award (aT President’s Award) at the AI Agricultural Price Forecasting Online Hackathon (aT), leading the IMPACT Lab team on vegetable price forecasting.' },
     { date: 'Sep 2026', text: 'Attended UN ESCAP CICTSTI-5, Bangkok.' },
     { date: 'Aug 2026', text: 'Started the M.S. in AI Policy & Strategy at GIST, IMPACT Lab.' },
     { date: 'Jul 2026', text: 'Attended the Asian Quantitative Finance Conference (AQFC), Pohang.' },
@@ -52,7 +52,7 @@ export const awards: Award[] = [
     {
         date: '[[Nov 2026]]',
         title: '**Excellence Award**, aT President’s Award',
-        detail: '[[aT data hackathon — exact name]], Korea Agro-Fisheries & Food Trade Corp. Led the IMPACT Lab team on vegetable price forecasting.',
+        detail: 'AI Agricultural Price Forecasting Online Hackathon, Korea Agro-Fisheries & Food Trade Corp. Led the IMPACT Lab team on vegetable price forecasting.',
         logos: [{ src: atLogo, alt: 'aT — Korea Agro-Fisheries & Food Trade Corp.', className: 'awards__logo--at' }],
     },
     {
