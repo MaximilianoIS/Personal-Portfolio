@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { NewsList } from './Home';
 import { SectionTitle } from './Layout';
 import { Text } from './Text';
+import gistMark from '../assets/images/gist-logo.png';
+import unamMark from '../assets/images/unam-logo.png';
+
 import { experience, links, physics, skills } from './data';
 
+const orgLogos = { gist: [gistMark, 'GIST'], unam: [unamMark, 'UNAM'] } as const;
 const circled = ['①', '②', '③', '④', '⑤', '⑥'];
 
 export function PageHeader({ title, intro }: { title: string; intro?: string }) {
@@ -52,6 +56,9 @@ export function HistoryPage() {
                     {experience.map((r, i) => (
                         <li key={i}>
                             <span className="cv-list__when"><Text>{r.when}</Text></span>
+                            <span className="cv-list__logo">
+                                {r.logo && <img src={orgLogos[r.logo][0]} alt={orgLogos[r.logo][1]} />}
+                            </span>
                             <span className="cv-list__what">{r.what}</span>
                             <span className="cv-list__where"><Text>{r.where}</Text></span>
                         </li>

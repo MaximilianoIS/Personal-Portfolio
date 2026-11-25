@@ -192,16 +192,16 @@ export const physics: PhysicsItem[] = [
     },
 ];
 
-export interface Role { when: string; what: string; where: string; }
+export interface Role { when: string; what: string; where: string; logo?: 'gist' | 'unam'; }
 
 export const experience: Role[] = [
-    { when: 'Aug 2026 – Aug 2028 (exp.)', what: 'M.S., AI Policy & Strategy', where: 'AI X School, GIST · IMPACT Lab (Prof. Duk-Jo Kong)' },
-    { when: 'Oct 2025 – [[Jul 2026]]', what: 'Research Intern, NLP & AI', where: 'IMPACT Lab, GIST' },
-    { when: 'Jul – Sep 2025', what: 'Research Intern, Quantum Information', where: 'UNAM · Mexican Physics Society (remote)' },
-    { when: 'Mar – Jun 2025', what: 'Research Intern, Computational Materials', where: 'AI Semiconductors Lab, GIST' },
-    { when: 'Jul – Aug 2024', what: 'Research Intern, Experimental Physics', where: 'High Energy Density Physics Lab, GIST' },
-    { when: 'Sep 2023 – Jul 2024', what: 'Research Intern, Computational Mathematics', where: 'Mathematical Sciences Lab, GIST' },
-    { when: 'Aug 2022 – Aug 2026', what: 'B.Sc. Physics', where: 'GIST · Minor in AI' },
+    { when: 'Aug 2026 – Aug 2028 (exp.)', what: 'M.S., AI Policy & Strategy', where: 'AI X School, GIST · IMPACT Lab (Prof. Duk-Jo Kong)', logo: 'gist' },
+    { when: 'Oct 2025 – [[Jul 2026]]', what: 'Research Intern, NLP & AI', where: 'IMPACT Lab, GIST', logo: 'gist' },
+    { when: 'Jul – Sep 2025', what: 'Research Intern, Quantum Information', where: 'UNAM · Mexican Physics Society (remote)', logo: 'unam' },
+    { when: 'Mar – Jun 2025', what: 'Research Intern, Computational Materials', where: 'AI Semiconductors Lab, GIST', logo: 'gist' },
+    { when: 'Jul – Aug 2024', what: 'Research Intern, Experimental Physics', where: 'High Energy Density Physics Lab, GIST', logo: 'gist' },
+    { when: 'Sep 2023 – Jul 2024', what: 'Research Intern, Computational Mathematics', where: 'Mathematical Sciences Lab, GIST', logo: 'gist' },
+    { when: 'Aug 2022 – Aug 2026', what: 'B.Sc. Physics', where: 'GIST · Minor in AI', logo: 'gist' },
 ];
 
 export const skills = [
