@@ -3723,3 +3723,117 @@ a.awards__row:hover .awards__arrow {
         linear-gradient(to right, transparent 0%, #000 16%, #000 84%, transparent 100%);
     mask-composite: intersect;
 }
+
+// ═════════════════════════════════════════════════════════════
+// PALETTE — "Institutional Quant"
+//   background #FAFAFA · tint #F1F5F9 · text #0F172A · accent #1D4ED8
+// Plus IBM Plex Mono for metadata (dates, numbers, statuses, tags).
+// ═════════════════════════════════════════════════════════════
+:root {
+    --bg: #fafafa;
+    --tint: #f1f5f9;
+    --ink: #0f172a;
+    --black: #0f172a;
+    --muted: #64748b;
+    --line: #0f172a;
+    --line-soft: rgba(15, 23, 42, 0.12);
+    --site: #1d4ed8;
+    --site-soft: rgba(29, 78, 216, 0.08);
+    --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+body {
+    background: var(--bg);
+    color: var(--ink);
+}
+
+.intro__muted {
+    color: #8b95a7;
+}
+
+.newsbar {
+    background: var(--tint);
+}
+
+.highlight,
+.pub .highlight {
+    background-image: linear-gradient(rgba(29, 78, 216, 0.14), rgba(29, 78, 216, 0.14));
+}
+
+.text-link {
+    text-decoration-color: rgba(15, 23, 42, 0.3);
+
+    &:hover {
+        color: var(--site);
+        text-decoration-color: var(--site);
+    }
+}
+
+.sidebar__nav .is-active,
+.sidebar__nav a:hover,
+.sidebar__nav button:hover {
+    color: var(--site);
+}
+
+.section-title::after,
+.page__title::after {
+    background: var(--site);
+}
+
+.copy-email:hover .copy-email__address {
+    color: var(--site);
+}
+
+.copy-email:hover .copy-email__icon {
+    color: var(--site);
+    border-color: var(--site);
+}
+
+.lang__toggle:hover,
+.lang__toggle[aria-expanded='true'] {
+    color: var(--site);
+}
+
+// ─── Monospace metadata ──────────────────────────────────────
+.news__date,
+.pub__label,
+.pub__num,
+.awards__date,
+.cv-list__when,
+.archive__year,
+.archive__kind,
+.accordion__meta,
+.pub__grid dt,
+.paper-detail__grid dt,
+.stats dd,
+.journal__rank,
+.tags span,
+.paper-detail__note {
+    font-family: var(--mono);
+    letter-spacing: 0;
+}
+
+.news__date,
+.awards__date,
+.cv-list__when,
+.archive__year {
+    font-size: 0.8rem;
+}
+
+.pub__label {
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+}
+
+.tags span {
+    font-size: 0.76rem;
+}
+
+.journal__rank {
+    font-size: 0.78rem;
+}
+
+// headline second clause in a softened cobalt (the accent, lightened for large type)
+.intro__muted {
+    color: #5576d6;
+}
