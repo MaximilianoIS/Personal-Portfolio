@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NewsList } from './Home';
 import { SectionTitle } from './Layout';
 import { Text } from './Text';
-import gistMark from '../assets/images/gist-logo.png';
+import gistMark from '../assets/images/gist-wordmark.png';
 import unamMark from '../assets/images/unam-logo.png';
 
 import { experience, links, physics, skills } from './data';
@@ -60,7 +60,19 @@ export function HistoryPage() {
                                 {r.logo && <img src={orgLogos[r.logo][0]} alt={orgLogos[r.logo][1]} />}
                             </span>
                             <span className="cv-list__what">{r.what}</span>
-                            <span className="cv-list__where"><Text>{r.where}</Text></span>
+                            <span className="cv-list__where">
+                                <Text>{r.where}</Text>
+                                {r.labs && (
+                                    <ul className="cv-labs">
+                                        {r.labs.map((l) => (
+                                            <li key={l.name}>
+                                                <span className="cv-labs__name">{l.name}</span>
+                                                <span className="cv-labs__meta">{l.topic} · {l.when}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </span>
                         </li>
                     ))}
                 </ul>

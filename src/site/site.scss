@@ -3881,3 +3881,65 @@ body {
         grid-column: 2;
     }
 }
+
+// History v2: modern GIST wordmark, condensed GIST internships
+.cv-list li {
+    grid-template-columns: 170px 64px minmax(0, 1fr) minmax(0, 1.2fr);
+    align-items: start;
+}
+
+.cv-list__logo {
+    width: 64px;
+    height: 28px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    justify-content: flex-start;
+    margin-top: 2px;
+
+    img {
+        max-height: 20px;
+    }
+}
+
+// UNAM crest is square; keep it compact next to the wordmark
+.cv-list__logo img[alt='UNAM'] {
+    max-height: 30px;
+}
+
+.cv-list__when,
+.cv-list__what {
+    padding-top: 2px;
+}
+
+.cv-labs {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 0;
+
+    li {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 2px 12px;
+        padding: 6px 0;
+        border-top: 1px dashed var(--line-soft);
+        font-size: 0.9rem;
+    }
+
+    &__name {
+        color: var(--ink);
+    }
+
+    &__meta {
+        font-family: var(--mono);
+        font-size: 0.74rem;
+        color: var(--muted);
+    }
+}
+
+@media (max-width: 760px) {
+    .cv-list li {
+        grid-template-columns: 64px minmax(0, 1fr);
+    }
+}

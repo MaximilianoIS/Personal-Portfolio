@@ -192,15 +192,23 @@ export const physics: PhysicsItem[] = [
     },
 ];
 
-export interface Role { when: string; what: string; where: string; logo?: 'gist' | 'unam'; }
+export interface Role { when: string; what: string; where: string; logo?: 'gist' | 'unam'; labs?: { name: string; topic: string; when: string }[]; }
 
 export const experience: Role[] = [
     { when: 'Aug 2026 – Aug 2028 (exp.)', what: 'M.S., AI Policy & Strategy', where: 'AI X School, GIST · IMPACT Lab (Prof. Duk-Jo Kong)', logo: 'gist' },
-    { when: 'Oct 2025 – Jul 2026', what: 'Research Intern, NLP & AI', where: 'IMPACT Lab, GIST', logo: 'gist' },
+    {
+        when: 'Sep 2023 – Jul 2026',
+        what: 'Undergraduate Research Intern',
+        where: 'GIST · four labs',
+        logo: 'gist',
+        labs: [
+            { name: 'IMPACT Lab', topic: 'NLP & AI', when: 'Oct 2025 – Jul 2026' },
+            { name: 'AI Semiconductors Lab', topic: 'Computational materials', when: 'Mar – Jun 2025' },
+            { name: 'High Energy Density Physics Lab', topic: 'Experimental physics', when: 'Jul – Aug 2024' },
+            { name: 'Mathematical Sciences Lab', topic: 'Computational mathematics', when: 'Sep 2023 – Jul 2024' },
+        ],
+    },
     { when: 'Jul – Sep 2025', what: 'Research Intern, Quantum Information', where: 'UNAM · Mexican Physics Society (remote)', logo: 'unam' },
-    { when: 'Mar – Jun 2025', what: 'Research Intern, Computational Materials', where: 'AI Semiconductors Lab, GIST', logo: 'gist' },
-    { when: 'Jul – Aug 2024', what: 'Research Intern, Experimental Physics', where: 'High Energy Density Physics Lab, GIST', logo: 'gist' },
-    { when: 'Sep 2023 – Jul 2024', what: 'Research Intern, Computational Mathematics', where: 'Mathematical Sciences Lab, GIST', logo: 'gist' },
     { when: 'Aug 2022 – Aug 2026', what: 'B.Sc. Physics', where: 'GIST · Minor in AI', logo: 'gist' },
 ];
 
