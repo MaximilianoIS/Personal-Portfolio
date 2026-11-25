@@ -3943,3 +3943,44 @@ body {
         grid-template-columns: 64px minmax(0, 1fr);
     }
 }
+
+// History: certifications list (same rhythm as the timeline)
+.certs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        display: grid;
+        grid-template-columns: 170px minmax(0, 1fr) minmax(0, 1.2fr);
+        gap: 24px;
+        align-items: baseline;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line-soft);
+
+        &:first-child {
+            padding-top: 0;
+        }
+    }
+
+    &__when {
+        font-family: var(--mono);
+        font-size: 0.8rem;
+        color: var(--muted);
+    }
+
+    &__name {
+        font-size: 1.05rem;
+    }
+
+    &__detail {
+        color: var(--muted);
+    }
+}
+
+@media (max-width: 760px) {
+    .certs li {
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+}

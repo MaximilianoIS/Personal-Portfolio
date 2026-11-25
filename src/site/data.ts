@@ -212,6 +212,14 @@ export const experience: Role[] = [
     { when: 'Aug 2022 – Aug 2026', what: 'B.Sc. Physics', where: 'GIST · Minor in AI', logo: 'gist' },
 ];
 
+// Certifications & tests (History page). Add CFA Investment Foundations / FRM Part I
+// here once earned or booked — e.g. { when: 'May 2027', name: 'FRM Part I', detail: 'Candidate (GARP)' }.
+export interface Certification { when: string; name: string; detail: string; }
+
+export const certifications: Certification[] = [
+    { when: 'Jan 2025', name: 'IELTS Academic', detail: 'Overall band 8.0' },
+];
+
 export const skills = [
     'Python', 'PyTorch', 'LightGBM', 'XGBoost', 'SHAP', 'LLMs & NLP', 'Time-series forecasting',
     'Topic models', 'Monte Carlo', 'Stochastic simulation', 'Fortran', 'C / C++', 'MPI', 'GPU / HPC',

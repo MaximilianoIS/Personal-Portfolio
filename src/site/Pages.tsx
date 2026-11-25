@@ -5,7 +5,7 @@ import { Text } from './Text';
 import gistMark from '../assets/images/gist-wordmark.png';
 import unamMark from '../assets/images/unam-logo.png';
 
-import { experience, links, physics, skills } from './data';
+import { certifications, experience, links, physics, skills } from './data';
 
 const orgLogos = { gist: [gistMark, 'GIST'], unam: [unamMark, 'UNAM'] } as const;
 const circled = ['①', '②', '③', '④', '⑤', '⑥'];
@@ -78,11 +78,23 @@ export function HistoryPage() {
                 </ul>
             </section>
             <section className="section section--tight">
+                <SectionTitle>Certifications</SectionTitle>
+                <ul className="certs">
+                    {certifications.map((c) => (
+                        <li key={c.name}>
+                            <span className="certs__when">{c.when}</span>
+                            <span className="certs__name">{c.name}</span>
+                            <span className="certs__detail">{c.detail}</span>
+                        </li>
+                    ))}
+                </ul>
+            </section>
+            <section className="section section--tight">
                 <SectionTitle>Skills</SectionTitle>
                 <div className="tags tags--large">
                     {skills.map((s) => <span key={s}>{s}</span>)}
                 </div>
-                <p className="page__note">Spanish (native) · English (IELTS Academic 8.0) · Korean (functional)</p>
+                <p className="page__note">Spanish (native) · English (fluent) · Korean (functional)</p>
             </section>
         </main>
     );
