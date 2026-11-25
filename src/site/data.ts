@@ -8,6 +8,7 @@ import elsevierLogo from '../assets/images/elsevier-logo.png';
 import iquhackDuck from '../assets/images/iquhack-duck.png';
 import mitLogo from '../assets/images/mit-logo.png';
 import foreignFlowsImg from '../assets/images/paper-foreign-flows.webp';
+import fplpCover from '../assets/images/fplp_cover.jpg';
 import atLogo from '../assets/images/at-logo.svg';
 
 // Unsplash placeholders, cropped server-side to 3:2 so every card frames the same way
@@ -92,7 +93,7 @@ export const papers: Paper[] = [
         id: 'foreign-flows',
         status: 'In preparation',
         title: 'Explainable Forecasting of Foreign Investor Trading: News versus Macro-Financial Signals',
-        authors: 'John Park*, Maximiliano Islas Solis*, Duk-Jo Kong',
+        authors: 'John Park*, Maximiliano Islas Solis*, Jiwoong Heo, Seohyun Lee, Duk-Jo Kong',
         note: '* equal contribution',
         venue: 'Target journal',
         journal: {
@@ -144,8 +145,8 @@ export const papers: Paper[] = [
         authors: 'Jinseong Son, Maximiliano Islas Solis, Tsoggerel Tsogbadrakh, Chi-Ok Hwang',
         venue: 'Target: Advanced Theory and Simulations',
         result: 'A random-walk Monte Carlo method for electrostatic charge density on conductors — ==the same first-passage machinery used in derivatives pricing and risk==.',
-        image: img('1507413245164-6160d8298b31'),
-        imageAlt: 'Placeholder: plasma filaments',
+        image: fplpCover,
+        imageAlt: 'Conducting cube inside a sphere with a point charge q at distance d',
         details: [
             { label: 'Problem', text: 'Estimate charge density on conducting surfaces without meshing the domain.' },
             { label: 'Method', text: 'First-passage random walks combined with last-passage boundary sampling.' },
