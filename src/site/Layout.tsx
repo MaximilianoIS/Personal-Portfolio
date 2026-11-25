@@ -7,19 +7,17 @@ import { faCopy } from '@fortawesome/free-regular-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import portrait from '../assets/images/portrait.webp';
 import { links } from './data';
+import { smoothScrollTo } from './smooth';
 
 export type Route = 'home' | 'projects' | 'history' | 'news' | 'contact';
 
 export const goHomeTo = (id?: string) => {
-    const scroll = () =>
-        id
-            ? document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-            : window.scrollTo({ top: 0, behavior: 'smooth' });
     if (window.location.hash && window.location.hash !== '#/') {
         window.location.hash = '/';
-        setTimeout(scroll, 120);
+        // wait for the page cross-fade (App.tsx) before gliding to the section
+        setTimeout(() => smoothScrollTo(id), 420);
     } else {
-        scroll();
+        smoothScrollTo(id);
     }
 };
 

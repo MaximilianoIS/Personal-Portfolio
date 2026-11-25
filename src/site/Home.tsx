@@ -6,7 +6,19 @@ import { awards, intro, news, papers, Paper } from './data';
 import { NumberTicker } from './motion';
 
 const pad = (n: number) => String(n).padStart(2, '0');
-const ease = [0.22, 1, 0.36, 1] as const;
+const expand = {
+    initial: { height: 0, opacity: 0 },
+    animate: {
+        height: 'auto',
+        opacity: 1,
+        transition: { height: { duration: 0.5, ease: [0.32, 0.72, 0, 1] }, opacity: { duration: 0.35, delay: 0.08 } },
+    },
+    exit: {
+        height: 0,
+        opacity: 0,
+        transition: { height: { duration: 0.4, ease: [0.32, 0.72, 0, 1] }, opacity: { duration: 0.18 } },
+    },
+} as const;
 
 function Intro() {
     return (
@@ -53,13 +65,7 @@ function NewsBar() {
             </button>
             <AnimatePresence initial={false}>
                 {open && (
-                    <motion.div
-                        className="newsbar__more"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease }}
-                    >
+                    <motion.div className="newsbar__more" {...expand}>
                         {rest.map((n, i) => (
                             <div key={i} className="newsbar__item">
                                 <span className="news__date"><Text>{n.date}</Text></span>
@@ -108,13 +114,7 @@ function PubRow({ p, i }: { p: Paper; i: number }) {
 
             <AnimatePresence initial={false}>
                 {open && (
-                    <motion.div
-                        className="pub__detail"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.35, ease }}
-                    >
+                    <motion.div className="pub__detail" {...expand}>
                         <div className="pub__detail-inner">
                             <p className="pub__result"><Text>{p.result}</Text></p>
                             {p.stats && (

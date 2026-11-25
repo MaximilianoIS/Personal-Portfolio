@@ -4,6 +4,7 @@ import { Route, Sidebar } from './site/Layout';
 import Home from './site/Home';
 import Projects from './site/Projects';
 import { ContactPage, HistoryPage, NewsPage } from './site/Pages';
+import { smoothScrollTo, startSmoothScroll } from './site/smooth';
 import './site/site.scss';
 
 // Previous design is preserved on the `backup/original-site` branch.
@@ -30,6 +31,8 @@ const pages: Record<Route, React.ReactElement> = {
 function App() {
     const [route, setRoute] = useState<Route>(parse(window.location.hash));
 
+    useEffect(() => startSmoothScroll(), []);
+
     useEffect(() => {
         const onChange = () => setRoute(parse(window.location.hash));
         window.addEventListener('hashchange', onChange);
@@ -42,12 +45,13 @@ function App() {
             <div className="shell">
                 <Sidebar route={route} />
                 <div className="shell__main">
-                    <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo({ top: 0 })}>
+                    <AnimatePresence mode="wait" onExitComplete={() => smoothScrollTo(undefined, { immediate: true })}>
                         <motion.div
                             key={route}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1, transition: { duration: 0.2 } }}
-                            exit={{ opacity: 0, transition: { duration: 0.12 } }}
+                            // old page lifts away, new one settles in from just below
+                            initial={{ opacity: 0, y: 14 }}
+                            animate={{ opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } }}
+                            exit={{ opacity: 0, y: -8, transition: { duration: 0.2, ease: [0.4, 0, 1, 1] } }}
                         >
                             {pages[route]}
                         </motion.div>
