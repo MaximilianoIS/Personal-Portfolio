@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Personal-Portfolio/static/css/main.ab993988.css",
-    "main.js": "/Personal-Portfolio/static/js/main.1b72d7b0.js",
+    "main.js": "/Personal-Portfolio/static/js/main.a4cfb7f8.js",
     "static/js/453.cba9e5b1.chunk.js": "/Personal-Portfolio/static/js/453.cba9e5b1.chunk.js",
     "static/media/portrait.webp": "/Personal-Portfolio/static/media/portrait.0678c96425d2e6dbeea9.webp",
     "static/media/secihti-logo.svg": "/Personal-Portfolio/static/media/secihti-logo.a221e4d06bcdb2ad7073915c3a04d530.svg",
@@ -12,11 +12,11 @@
     "static/media/flag-kr.png": "/Personal-Portfolio/static/media/flag-kr.b6658f666a93dc7351f7.png",
     "index.html": "/Personal-Portfolio/index.html",
     "main.ab993988.css.map": "/Personal-Portfolio/static/css/main.ab993988.css.map",
-    "main.1b72d7b0.js.map": "/Personal-Portfolio/static/js/main.1b72d7b0.js.map",
+    "main.a4cfb7f8.js.map": "/Personal-Portfolio/static/js/main.a4cfb7f8.js.map",
     "453.cba9e5b1.chunk.js.map": "/Personal-Portfolio/static/js/453.cba9e5b1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ab993988.css",
-    "static/js/main.1b72d7b0.js"
+    "static/js/main.a4cfb7f8.js"
   ]
 }
