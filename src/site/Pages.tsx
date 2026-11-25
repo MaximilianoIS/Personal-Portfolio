@@ -4,10 +4,44 @@ import { SectionTitle } from './Layout';
 import { Text } from './Text';
 import gistMark from '../assets/images/gist-wordmark.png';
 import unamMark from '../assets/images/unam-logo.png';
+import cfaMark from '../assets/images/cfa-institute-logo.svg';
+import ieltsMark from '../assets/images/ielts-logo.svg';
+import { AnimatePresence, motion } from 'motion/react';
 
 import { certifications, experience, links, physics, skills } from './data';
 
 const orgLogos = { gist: [gistMark, 'GIST'], unam: [unamMark, 'UNAM'] } as const;
+const certLogos = { cfa: [cfaMark, 'CFA Institute'], ielts: [ieltsMark, 'IELTS'] } as const;
+
+// GIST internships: four labs that open and close under the row
+function LabList({ labs }: { labs: { name: string; topic: string; when: string }[] }) {
+    const [open, setOpen] = useState(false);
+    return (
+        <div className="cv-labs-wrap">
+            <button className="cv-labs__toggle" onClick={() => setOpen(!open)} aria-expanded={open}>
+                {open ? 'Hide labs' : `Show ${labs.length} labs`}
+                <span className={`cv-labs__chev${open ? ' is-open' : ''}`} aria-hidden>⌄</span>
+            </button>
+            <AnimatePresence initial={false}>
+                {open && (
+                    <motion.ul
+                        className="cv-labs"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1, transition: { height: { duration: 0.4, ease: [0.32, 0.72, 0, 1] }, opacity: { duration: 0.3, delay: 0.06 } } }}
+                        exit={{ height: 0, opacity: 0, transition: { height: { duration: 0.32, ease: [0.32, 0.72, 0, 1] }, opacity: { duration: 0.15 } } }}
+                    >
+                        {labs.map((l) => (
+                            <li key={l.name}>
+                                <span className="cv-labs__name">{l.name}</span>
+                                <span className="cv-labs__meta">{l.topic} · {l.when}</span>
+                            </li>
+                        ))}
+                    </motion.ul>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+}
 const circled = ['①', '②', '③', '④', '⑤', '⑥'];
 
 export function PageHeader({ title, intro }: { title: string; intro?: string }) {
@@ -62,16 +96,7 @@ export function HistoryPage() {
                             <span className="cv-list__what">{r.what}</span>
                             <span className="cv-list__where">
                                 <Text>{r.where}</Text>
-                                {r.labs && (
-                                    <ul className="cv-labs">
-                                        {r.labs.map((l) => (
-                                            <li key={l.name}>
-                                                <span className="cv-labs__name">{l.name}</span>
-                                                <span className="cv-labs__meta">{l.topic} · {l.when}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
+                                {r.labs && <LabList labs={r.labs} />}
                             </span>
                         </li>
                     ))}
@@ -83,6 +108,9 @@ export function HistoryPage() {
                     {certifications.map((c) => (
                         <li key={c.name}>
                             <span className="certs__when">{c.when}</span>
+                            <span className="cv-list__logo certs__logo">
+                                {c.logo && <img src={certLogos[c.logo][0]} alt={certLogos[c.logo][1]} />}
+                            </span>
                             <span className="certs__name">{c.name}</span>
                             <span className="certs__detail">{c.detail}</span>
                         </li>

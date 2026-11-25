@@ -214,10 +214,11 @@ export const experience: Role[] = [
 
 // Certifications & tests (History page). Add CFA Investment Foundations / FRM Part I
 // here once earned or booked — e.g. { when: 'May 2027', name: 'FRM Part I', detail: 'Candidate (GARP)' }.
-export interface Certification { when: string; name: string; detail: string; }
+export interface Certification { when: string; name: string; detail: string; logo?: 'cfa' | 'ielts'; }
 
 export const certifications: Certification[] = [
-    { when: 'Jan 2025', name: 'IELTS Academic', detail: 'Overall band 8.0' },
+    { when: '15 Dec 2025', name: 'CFA Institute Investment Foundations Certificate', detail: 'Completed', logo: 'cfa' },
+    { when: 'Jan 2025', name: 'IELTS Academic', detail: 'Overall band 8.0', logo: 'ielts' },
 ];
 
 export const skills = [

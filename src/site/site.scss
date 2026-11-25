@@ -3984,3 +3984,71 @@ body {
         gap: 2px;
     }
 }
+
+// GIST internships: collapsible lab list
+.cv-labs__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    font-size: 0.85rem;
+    color: var(--ink);
+    background-image: linear-gradient(var(--site), var(--site));
+    background-size: 0 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.25s ease, color 0.2s ease;
+
+    &:hover,
+    &[aria-expanded='true'] {
+        color: var(--site);
+        background-size: 100% 1px;
+    }
+}
+
+.cv-labs__chev {
+    display: inline-block;
+    line-height: 1;
+    margin-top: -4px;
+    transition: transform 0.25s ease;
+
+    &.is-open {
+        transform: rotate(180deg) translateY(-3px);
+    }
+}
+
+.cv-labs {
+    overflow: hidden;
+}
+
+// certifications get the same logo column as the timeline
+.certs li {
+    grid-template-columns: 170px 64px minmax(0, 1fr) minmax(0, 1.2fr);
+    align-items: center;
+}
+
+.certs__logo img[alt='CFA Institute'] {
+    max-height: 30px;
+}
+
+.certs__logo img[alt='IELTS'] {
+    max-height: 16px;
+}
+
+@media (max-width: 760px) {
+    .certs li {
+        grid-template-columns: 64px minmax(0, 1fr);
+        column-gap: 12px;
+        align-items: start;
+    }
+
+    .certs__logo {
+        grid-row: 1 / span 3;
+    }
+
+    .certs__when,
+    .certs__name,
+    .certs__detail {
+        grid-column: 2;
+    }
+}
