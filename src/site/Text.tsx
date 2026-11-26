@@ -3,6 +3,7 @@ import gistLogo from '../assets/images/gist-wordmark.png';
 import flagMx from '../assets/images/flag-mx.png';
 import flagKr from '../assets/images/flag-kr.png';
 import secihtiLogo from '../assets/images/secihti-logo.svg';
+import { useLang } from './i18n';
 import { Highlight } from './motion';
 
 // [image, alt, extra class]
@@ -22,6 +23,7 @@ const inlineLogos: Record<string, [string, string, string]> = {
 const TOKEN = /(\[\[[^\]]*\]\]|==[^=]+==|\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\)|::\w+::)/g;
 
 export function Text({ children }: { children: string }) {
+    const { content } = useLang();
     const parts = children.split(TOKEN);
     return (
         <>
@@ -29,7 +31,7 @@ export function Text({ children }: { children: string }) {
                 if (!p) return null;
                 if (p.startsWith('[[')) {
                     return (
-                        <mark key={i} className="tbd" title="Placeholder — needs confirming">
+                        <mark key={i} className="tbd" title={content.ui.placeholderTitle}>
                             {p.slice(2, -2)}
                         </mark>
                     );

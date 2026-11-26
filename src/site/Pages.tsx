@@ -8,7 +8,8 @@ import cfaMark from '../assets/images/cfa-institute-logo.svg';
 import ieltsMark from '../assets/images/ielts-logo.svg';
 import { AnimatePresence, motion } from 'motion/react';
 
-import { certifications, experience, links, physics, skills } from './data';
+import { links } from './data';
+import { useLang } from './i18n';
 
 const orgLogos = { gist: [gistMark, 'GIST'], unam: [unamMark, 'UNAM'] } as const;
 const certLogos = { cfa: [cfaMark, 'CFA Institute'], ielts: [ieltsMark, 'IELTS'] } as const;
@@ -16,10 +17,11 @@ const certLogos = { cfa: [cfaMark, 'CFA Institute'], ielts: [ieltsMark, 'IELTS']
 // GIST internships: four labs that open and close under the row
 function LabList({ labs }: { labs: { name: string; topic: string; when: string }[] }) {
     const [open, setOpen] = useState(false);
+    const { content } = useLang();
     return (
         <div className="cv-labs-wrap">
             <button className="cv-labs__toggle" onClick={() => setOpen(!open)} aria-expanded={open}>
-                {open ? 'Hide labs' : `Show ${labs.length} labs`}
+                {open ? content.ui.buttons.hideLabs : content.ui.buttons.showLabs(labs.length)}
                 <span className={`cv-labs__chev${open ? ' is-open' : ''}`} aria-hidden>⌄</span>
             </button>
             <AnimatePresence initial={false}>
@@ -56,9 +58,10 @@ export function PageHeader({ title, intro }: { title: string; intro?: string }) 
 // Past physics research as a numbered accordion (used on the Projects page)
 export function PhysicsList() {
     const [open, setOpen] = useState<number | null>(0);
+    const { content } = useLang();
     return (
         <ul className="accordion">
-            {physics.map((item, i) => {
+            {content.physics.map((item, i) => {
                 const isOpen = open === i;
                 return (
                     <li key={item.title} className={isOpen ? 'is-open' : ''}>
@@ -79,11 +82,13 @@ export function PhysicsList() {
 }
 
 export function HistoryPage() {
+    const { content } = useLang();
+    const { ui, experience, certifications, skills } = content;
     return (
         <main className="wrap page">
             <PageHeader
-                title="History"
-                intro="Research internships, positions and education, most recent first."
+                title={ui.pages.historyTitle}
+                intro={ui.pages.historyIntro}
             />
             <section className="section section--tight">
                 <ul className="cv-list">
@@ -103,7 +108,7 @@ export function HistoryPage() {
                 </ul>
             </section>
             <section className="section section--tight">
-                <SectionTitle>Certifications</SectionTitle>
+                <SectionTitle>{ui.sections.certifications}</SectionTitle>
                 <ul className="certs">
                     {certifications.map((c) => (
                         <li key={c.name}>
@@ -118,20 +123,21 @@ export function HistoryPage() {
                 </ul>
             </section>
             <section className="section section--tight">
-                <SectionTitle>Skills</SectionTitle>
+                <SectionTitle>{ui.sections.skills}</SectionTitle>
                 <div className="tags tags--large">
                     {skills.map((s) => <span key={s}>{s}</span>)}
                 </div>
-                <p className="page__note">Spanish (native) · English (fluent) · Korean (functional)</p>
+                <p className="page__note">{ui.pages.languagesNote}</p>
             </section>
         </main>
     );
 }
 
 export function NewsPage() {
+    const { content } = useLang();
     return (
         <main className="wrap page">
-            <PageHeader title="News" />
+            <PageHeader title={content.ui.pages.newsTitle} />
             <section className="section section--tight">
                 <NewsList />
             </section>
@@ -140,18 +146,20 @@ export function NewsPage() {
 }
 
 export function ContactPage() {
+    const { content } = useLang();
+    const { pages } = content.ui;
     return (
         <main className="wrap page">
             <PageHeader
-                title="Contact"
-                intro="Open to research collaborations and internships in forecasting, alternative data and credit risk. Email is the best way to reach me."
+                title={pages.contactTitle}
+                intro={pages.contactIntro}
             />
             <section className="section section--tight">
                 <ul className="link-list link-list--page">
                     <li>
                         <a href={`mailto:${links.email}`}>
                             <span>{links.email}</span>
-                            <span className="link-list__meta">Email</span>
+                            <span className="link-list__meta">{pages.contactEmailMeta}</span>
                         </a>
                     </li>
                     <li>
@@ -163,12 +171,12 @@ export function ContactPage() {
                     <li>
                         <a href={links.lab} target="_blank" rel="noopener noreferrer">
                             <span>IMPACT Lab, AI X School, GIST</span>
-                            <span className="link-list__meta">Gwangju, South Korea ↗</span>
+                            <span className="link-list__meta">{pages.contactLocationMeta}</span>
                         </a>
                     </li>
                 </ul>
                 <p className="credit">
-                    Site design adapted from a portfolio template by Arnau Ros (CC BY 4.0).
+                    {pages.contactCredit}
                 </p>
             </section>
         </main>

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { Logo, SectionTitle } from './Layout';
 import { Authors, Text } from './Text';
-import { awards, intro, news, papers, Paper } from './data';
+import { Paper } from './data';
+import { useLang } from './i18n';
 import { NumberTicker } from './motion';
 
 const pad = (n: number) => String(n).padStart(2, '0');
@@ -21,6 +22,8 @@ const expand = {
 } as const;
 
 function Intro() {
+    const { content } = useLang();
+    const { intro } = content;
     return (
         <section className="intro" id="about">
             <div className="intro__head">
@@ -34,12 +37,19 @@ function Intro() {
             <div className="intro__bio">
                 {intro.bio.map((p, i) => <p key={i}><Text>{p}</Text></p>)}
             </div>
+            {intro.availability && (
+                <p className="intro__availability">
+                    <span className="intro__availability-dot" aria-hidden />
+                    <span><Text>{intro.availability}</Text></span>
+                </p>
+            )}
         </section>
     );
 }
 
 export function NewsList({ limit }: { limit?: number }) {
-    const items = limit ? news.slice(0, limit) : news;
+    const { content } = useLang();
+    const items = limit ? content.news.slice(0, limit) : content.news;
     return (
         <ul className="news">
             {items.map((n, i) => (
@@ -55,7 +65,8 @@ export function NewsList({ limit }: { limit?: number }) {
 // Latest item in a quiet bar; click to expand the rest.
 function NewsBar() {
     const [open, setOpen] = useState(false);
-    const [first, ...rest] = news;
+    const { content } = useLang();
+    const [first, ...rest] = content.news;
     return (
         <div className="newsbar">
             <button className="newsbar__row" onClick={() => setOpen(!open)} aria-expanded={open}>
@@ -82,9 +93,11 @@ function NewsBar() {
 // One publication: image left, text right (as on hyewon.me); "Details" opens below.
 function PubRow({ p, i }: { p: Paper; i: number }) {
     const [open, setOpen] = useState(false);
+    const { content } = useLang();
+    const { buttons } = content.ui;
     return (
         <article className="pub" style={{ '--accent': p.accent } as React.CSSProperties}>
-            <button className="pub__image" onClick={() => setOpen(!open)} aria-expanded={open} aria-label={`Details: ${p.title}`}>
+            <button className="pub__image" onClick={() => setOpen(!open)} aria-expanded={open} aria-label={buttons.detailsAria(p.title)}>
                 <img src={p.image} alt={p.imageAlt} loading="lazy" />
             </button>
             <div className="pub__body">
@@ -107,7 +120,7 @@ function PubRow({ p, i }: { p: Paper; i: number }) {
                 )}
                 <div className="pub__actions">
                     <button className="chip" onClick={() => setOpen(!open)} aria-expanded={open}>
-                        {open ? 'Hide details' : 'Details'} <span aria-hidden>{open ? '−' : '+'}</span>
+                        {open ? buttons.hideDetails : buttons.details} <span aria-hidden>{open ? '−' : '+'}</span>
                     </button>
                 </div>
             </div>
@@ -148,22 +161,24 @@ function PubRow({ p, i }: { p: Paper; i: number }) {
 }
 
 function Publications() {
+    const { content } = useLang();
     return (
         <section className="section" id="publications">
-            <SectionTitle>Publications</SectionTitle>
+            <SectionTitle>{content.ui.sections.publications}</SectionTitle>
             <div className="pubs">
-                {papers.map((p, i) => <PubRow key={p.id} p={p} i={i} />)}
+                {content.papers.map((p, i) => <PubRow key={p.id} p={p} i={i} />)}
             </div>
         </section>
     );
 }
 
 function Awards() {
+    const { content } = useLang();
     return (
         <section className="section" id="awards">
-            <SectionTitle>Awards</SectionTitle>
+            <SectionTitle>{content.ui.sections.awards}</SectionTitle>
             <ul className="awards">
-                {awards.map((a, i) => {
+                {content.awards.map((a, i) => {
                     const body = (
                         <>
                             <span className="awards__date"><Text>{a.date}</Text></span>

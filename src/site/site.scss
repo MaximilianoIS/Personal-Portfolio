@@ -4052,3 +4052,40 @@ body {
         grid-column: 2;
     }
 }
+
+// ─── Subtle availability line below bio ──────────────────────
+.intro__availability {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-top: 22px;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--muted);
+}
+
+.intro__availability-dot {
+    flex-shrink: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--site);
+    transform: translateY(-1px);
+}
+
+// ─── Korean typography polish ────────────────────────────────
+html[lang='ko'] {
+    body {
+        font-family: 'Inter Tight', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', -apple-system, BlinkMacSystemFont, sans-serif;
+        word-break: keep-all;
+    }
+
+    .intro__headline {
+        letter-spacing: -0.02em;
+        line-height: 1.24;
+    }
+
+    .shell__main .section-title h2 {
+        letter-spacing: 0.04em;
+    }
+}

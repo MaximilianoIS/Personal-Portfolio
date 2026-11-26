@@ -35,6 +35,7 @@ export const intro = {
         'I am an M.S. student in **AI Policy & Strategy** at ::gist:: [Gwangju Institute of Science and Technology (GIST)](https://www.gist.ac.kr/en/main.html), ::kr:: South Korea, working in the [IMPACT Lab](https://impact.gist.ac.kr/main/main.php) under [Prof. Duk-Jo Kong](https://impact.gist.ac.kr/team/professor.php). I am honored to be supported by the ::mx:: [SECIHTI Graduate Scholarship](https://secihti.mx/) from the Government of Mexico. I received my B.Sc. in Physics, with a minor in AI, from GIST in 2026.',
         'My research applies **machine learning and alternative data** — news text, LLM-derived sentiment and macro-financial signals — to **forecasting in equity and commodity markets**, with an emphasis on **explainability**. My physics background in **Monte Carlo and stochastic simulation** carries over to risk. I am also interested in credit risk for digital banking and the **systemic risk of AI trading agents**.',
     ],
+    availability: 'Open to Summer 2027 internships in Data Science, Machine Learning, and Risk (Mexico, South Korea, UK).',
     interests: ['ML for financial markets', 'Alternative data & NLP', 'Stochastic simulation'],
 };
 
@@ -69,7 +70,7 @@ export const awards: Award[] = [
     },
 ];
 
-export type PaperStatus = 'Working paper' | 'In preparation' | 'Submitted' | 'Planned';
+export type PaperStatus = string;
 
 export interface Paper {
     id: string;
@@ -188,7 +189,7 @@ export const physics: PhysicsItem[] = [
         title: 'Monte Carlo diffusion for the Laplace equation',
         where: 'Mathematical Sciences Lab · GIST',
         when: 'Sep 2023 – Jul 2024',
-        text: 'Fast Monte Carlo diffusion algorithms for the Laplace equation on conductor surfaces — the starting point of the first-passage paper above. Presented at GIST Embassy Welcome Day, Seoul (Oct 2024).',
+        text: 'Fast Monte Carlo diffusion algorithms for the Laplace equation on conductor surfaces — the starting point of the first-passage paper. Presented at GIST Embassy Welcome Day, Seoul (Oct 2024).',
     },
 ];
 
@@ -222,15 +223,18 @@ export const certifications: Certification[] = [
 ];
 
 export const skills = [
-    'Python', 'PyTorch', 'LightGBM', 'XGBoost', 'SHAP', 'LLMs & NLP', 'Time-series forecasting',
-    'Topic models', 'Monte Carlo', 'Stochastic simulation', 'Fortran', 'C / C++', 'MPI', 'GPU / HPC',
+    'Python', 'SQL', 'pandas', 'scikit-learn', 'PyTorch',
+    'LightGBM', 'XGBoost', 'SHAP', 'Statistical testing',
+    'Time-series forecasting', 'Time-series foundation models',
+    'LLMs & NLP', 'Multi-agent frameworks', 'Topic models',
+    'Monte Carlo', 'Stochastic simulation', 'Fortran', 'C / C++', 'MPI', 'GPU / HPC',
     'Quantum ESPRESSO',
 ];
 
 export interface MinorProject { year: string; title: string; kind: string; text: string; link?: string; code?: string; }
 
 export const minorProjects: MinorProject[] = [
-    { year: '2025', title: 'Global News Big-Data Analysis', kind: 'Course project (PBL)', text: 'NLP pipeline over 2M+ articles for the Korean Ministry of Culture, Sports and Tourism’s foreign-media monitoring (NOW platform).', link: '/ai-industry-report.pdf' },
+    { year: '2025', title: 'Global News Big-Data Analysis', kind: 'Course project (PBL)', text: 'NLP pipeline over 2M+ articles for the Korean Ministry of Culture, Sports and Tourism’s foreign-media monitoring (NOW platform).', link: `${process.env.PUBLIC_URL}/ai-industry-report.pdf` },
     { year: '2025', title: 'MIT iQuHACK 2025 — 1st place', kind: 'Hackathon', text: 'Quantum Rings remote challenge: factorization with Shor’s algorithm.', link: 'https://www.iquise.mit.edu/iQuHACK/2025-01-31', code: 'https://github.com/MaximilianoIS/quantum-fact' },
     { year: '[[year]]', title: 'EconDecode', kind: 'Hackathon', text: 'Web app teaching young people about the economy through live news and an LLM chatbot. GIST AI Hackathon.', link: 'https://econdecode.onrender.com/', code: 'https://github.com/MaximilianoIS/EconDecode' },
     { year: '[[year]]', title: 'AItinerary', kind: 'Side project', text: 'LLM-powered travel planner that builds and adapts day-by-day itineraries.', link: 'https://youtu.be/nWdPdh-t_8Q', code: 'https://github.com/MaximilianoIS/AItinerary' },
