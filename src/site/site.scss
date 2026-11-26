@@ -4089,3 +4089,40 @@ html[lang='ko'] {
         letter-spacing: 0.04em;
     }
 }
+
+// ─── Mobile: center portrait and sidebar elements ────────────
+@media (max-width: 900px) {
+    .sidebar__photo {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .sidebar__nav {
+        align-items: center;
+        text-align: center;
+    }
+
+    .sidebar__foot {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .copy-email {
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .socials {
+        justify-content: center;
+    }
+
+    .sidebar__meta {
+        width: 100%;
+        justify-content: center;
+        gap: 16px;
+    }
+}
