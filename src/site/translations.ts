@@ -433,7 +433,7 @@ const ko: SiteContent = {
             { text: ' 금융 및 원자재 시장을 위한 설명 가능한 예측 모델을 연구합니다.', muted: true },
         ],
         bio: [
-            '::kr:: 대한민국 ::gist:: [광주과학기술원(GIST)](https://www.gist.ac.kr/en/main.html)에서 **AI 정책·전략** 석사과정에 재학 중이며, [Duk-Jo Kong 교수](https://impact.gist.ac.kr/team/professor.php)님 지도하에 [IMPACT Lab](https://impact.gist.ac.kr/main/main.php)에서 연구하고 있습니다. 멕시코 정부의 ::mx:: [SECIHTI 대학원 장학금](https://secihti.mx/)을 수혜 중이며, 2026년 GIST에서 물리학 학사(AI 부전공)를 취득했습니다.',
+            '::kr:: 대한민국 ::gist:: [광주과학기술원(GIST)](https://www.gist.ac.kr/en/main.html)에서 **AI 정책·전략** 석사과정에 재학 중이며, [공득조 교수](https://impact.gist.ac.kr/team/professor.php)님 지도하에 [IMPACT Lab](https://impact.gist.ac.kr/main/main.php)에서 연구하고 있습니다. 멕시코 정부의 ::mx:: [SECIHTI 대학원 장학금](https://secihti.mx/)을 수혜 중이며, 2026년 GIST에서 물리학 학사(AI 부전공)를 취득했습니다.',
             '뉴스 텍스트, LLM 기반 감성 지표, 거시금융 신호 등 **머신러닝과 대안 데이터**를 활용해 **설명 가능성**에 중점을 둔 **주식·원자재 시장 예측**을 연구합니다. 물리학 전공을 통해 쌓은 **몬테카를로 및 확률적 시뮬레이션** 역량은 리스크 분석으로 확장되고 있으며, 디지털 뱅킹 신용 리스크와 **AI 트레이딩 에이전트의 시스템 리스크**에도 깊은 관심을 두고 있습니다.',
         ],
         availability: '2027년 여름 데이터 사이언스·머신러닝·리스크 분야 인턴십 지원 가능 (멕시코·한국·영국).',
@@ -541,7 +541,7 @@ const ko: SiteContent = {
         },
     ],
     experience: [
-        { when: '2026.08 – 2028.08 (예정)', what: 'AI 정책·전략 석사과정', where: 'AI X School, GIST · IMPACT Lab (Duk-Jo Kong 교수)', logo: 'gist' },
+        { when: '2026.08 – 2028.08 (예정)', what: 'AI 정책·전략 석사과정', where: 'AI X School, GIST · IMPACT Lab (공득조 교수)', logo: 'gist' },
         {
             when: '2023.09 – 2026.07',
             what: '학부 연구 인턴',
